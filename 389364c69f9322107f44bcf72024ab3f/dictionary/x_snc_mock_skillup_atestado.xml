@@ -10,6 +10,7 @@
         <element display="true" label="Colaborador" max_length="32" name="colaborador" reference="x_snc_mock_skillup_colaborador" type="reference"/>
         <element label="Data da ausência" mandatory="true" max_length="40" name="data_ausencia" type="glide_date"/>
         <element label="Motivo da ausência" mandatory="true" max_length="100" name="motivo_ausencia" type="string"/>
+        <element label="Observação" max_length="4000" name="observacao" type="journal"/>
         <index name="index">
             <element name="colaborador"/>
         </index>
