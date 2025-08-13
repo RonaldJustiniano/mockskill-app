@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="668d2c069fd322107f44bcf72024ab5b" label="Skill do Colaborador" max_length="40" name="x_snc_mock_skillup_skill_do_colaborador" type="collection">
+    <element audit="true" db_object_id="668d2c069fd322107f44bcf72024ab5b" label="Skill do Colaborador" max_length="40" name="x_snc_mock_skillup_skill_do_colaborador" type="collection">
         <element display="true" label="Colaborador" max_length="32" name="colaborador" reference="x_snc_mock_skillup_colaborador" type="reference"/>
         <element label="Data fim" max_length="40" name="data_fim" type="glide_date"/>
         <element label="Data início" max_length="40" name="data_inicio" type="glide_date"/>
