@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="4d2da0069fd322107f44bcf72024ab95" label="Equipe" max_length="40" name="x_snc_mock_skillup_equipe" type="collection">
+        <element display="true" label="Nome" max_length="100" name="nome" type="string"/>
+        <element label="Supervisor" max_length="32" name="supervisor" reference="x_snc_mock_skillup_supervisor" type="reference"/>
+        <index name="index">
+            <element name="supervisor"/>
+        </index>
+    </element>
+</database>

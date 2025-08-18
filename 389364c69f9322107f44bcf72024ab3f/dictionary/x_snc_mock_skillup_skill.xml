@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="7abc68c29fd322107f44bcf72024ab8f" label="Skill" max_length="40" name="x_snc_mock_skillup_skill" type="collection">
+        <element label="Descricao" max_length="100" name="descricao" type="string"/>
+        <element display="true" label="Nome" max_length="100" name="nome" type="string"/>
+    </element>
+</database>
