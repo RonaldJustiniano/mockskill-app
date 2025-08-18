@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element audit="true" db_object_id="f469a0ce9f9322107f44bcf72024ab31" label="Colaborador" max_length="40" name="x_snc_mock_skillup_colaborador" type="collection">
-        <element label="Data de nascimento" max_length="40" name="data_nascimento" type="glide_date"/>
+        <element label="User ID" max_length="100" name="user_id" type="string"/>
+        <element label="Localização" max_length="32" name="localizacao" reference="cmn_location" type="reference"/>
         <element label="Departamento" mandatory="true" max_length="100" name="departamento" type="string"/>
+        <element label="Supervisor" mandatory="true" max_length="32" name="supervisor" reference="x_snc_mock_skillup_supervisor" type="reference"/>
         <element label="Email" mandatory="true" max_length="100" name="email" type="string"/>
+        <element label="Data de nascimento" max_length="40" name="data_nascimento" type="glide_date"/>
         <element label="Idade" max_length="40" name="idade" type="integer"/>
         <element display="true" label="Nome" mandatory="true" max_length="100" name="nome" type="string"/>
-        <element label="Supervisor" mandatory="true" max_length="32" name="supervisor" reference="x_snc_mock_skillup_supervisor" type="reference"/>
-        <element label="User ID" max_length="100" name="user_id" type="string"/>
         <index name="index">
+            <element name="localizacao"/>
+        </index>
+        <index name="index2">
             <element name="supervisor"/>
         </index>
     </element>

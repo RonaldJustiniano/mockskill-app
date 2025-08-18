@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="all_tables.text_index_translations=true,kagami_csindex_enabled=true" db_object_id="4f7deb2288122210559020d480f9d234" label="Location" max_length="40" name="cmn_location" text_index="true" type="collection">
+        <element label="ibge" max_length="100" name="x_snc_mock_skillup_ibge" type="string"/>
+        <element display="true" label="capital" max_length="100" name="x_snc_mock_skillup_capital" type="string"/>
+        <element label="ibge_7" max_length="100" name="x_snc_mock_skillup_ibge_7" type="string"/>
+        <element label="regiao" max_length="100" name="x_snc_mock_skillup_regiao" type="string"/>
+        <element label="concat_uf_mun" max_length="100" name="x_snc_mock_skillup_concat_uf_mun" type="string"/>
+        <element label="porte" max_length="100" name="x_snc_mock_skillup_porte" type="string"/>
+        <element label="populacao_2010" max_length="40" name="x_snc_mock_skillup_populacao_2010" type="integer"/>
+    </element>
+</database>

@@ -3,8 +3,12 @@
         <element label="Usuario" max_length="32" name="usuario" reference="sys_user" type="reference"/>
         <element label="Email" mandatory="true" max_length="100" name="email" type="string"/>
         <element label="Departamento" max_length="100" name="departamento" type="string"/>
+        <element label="Localização" max_length="32" name="localizacao" reference="cmn_location" type="reference"/>
         <element display="true" label="Nome" mandatory="true" max_length="100" name="nome" type="string"/>
         <index name="index">
+            <element name="localizacao"/>
+        </index>
+        <index name="index2">
             <element name="usuario"/>
         </index>
     </element>
