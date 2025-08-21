@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Projeto">bb134638c3ef2a504d7636dc05013114</application>
+        <filter/>
+        <name>Projetos</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_snc_mock_skillup.projeto_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-21 13:58:38</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>84434238c3ef2a504d7636dc050131fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Projetos</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sys_ui_module_84434238c3ef2a504d7636dc050131fc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-21 13:58:38</sys_updated_on>
+        <table>x_snc_mock_skillup_projeto</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+</record_update>

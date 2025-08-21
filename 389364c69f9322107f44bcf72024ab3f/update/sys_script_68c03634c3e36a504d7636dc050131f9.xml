@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_snc_mock_skillup_certificados</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_snc_mock_skillup_certificados">u_quantidade_horasISEMPTY^u_cursoISNOTEMPTY^EQ<item endquery="false" field="u_quantidade_horas" goto="false" newquery="false" operator="ISEMPTY" or="false" value=""/>
+            <item endquery="false" field="u_curso" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Certificado - preencher horas do curso</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+  function hoursToDurationString(h) {
+    var total = Math.round(parseFloat(h || 0) * 3600);
+    if (isNaN(total) || total < 0) total = 0;
+    var days = Math.floor(total / 86400);
+    var rem  = total % 86400;
+    var hh   = Math.floor(rem / 3600);
+    var mm   = Math.floor((rem % 3600) / 60);
+    var ss   = rem % 60;
+    function pad(n){ return (n < 10 ? '0' : '') + n; }
+    return days + ' ' + pad(hh) + ':' + pad(mm) + ':' + pad(ss);
+  }
+
+  if (gs.nil(current.u_quantidade_horas) && !gs.nil(current.u_curso)) {
+    var c = new GlideRecord('x_snc_mock_skillup_curso');
+    if (c.get(current.u_curso)) {
+      current.u_quantidade_horas = hoursToDurationString(c.u_duracao);
+    }
+  }
+
+  if (gs.nil(current.u_data_emissao)) {
+    current.u_data_emissao = gs.nowDate();
+  }
+})(current, previous);
+]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-21 17:19:22</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>68c03634c3e36a504d7636dc050131f9</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Certificado - preencher horas do curso</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sys_script_68c03634c3e36a504d7636dc050131f9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-21 19:01:19</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=68c03634c3e36a504d7636dc050131f9"/>
+</record_update>

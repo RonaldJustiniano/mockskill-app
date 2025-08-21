@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="80ba4ff8c3276a504d7636dc050131e3" extends="task" label="Bug" max_length="40" name="x_snc_mock_skillup_bug" type="collection"/>
+</database>

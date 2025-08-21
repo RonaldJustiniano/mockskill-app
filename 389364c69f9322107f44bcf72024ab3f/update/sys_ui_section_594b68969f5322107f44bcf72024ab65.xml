@@ -4,13 +4,13 @@
             <element>colaborador</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:57</sys_created_on>
-            <sys_id>ab0f6cda9f5322107f44bcf72024abf6</sys_id>
+            <sys_created_on>2025-08-20 18:02:18</sys_created_on>
+            <sys_id>a3617d64c3abe6504d7636dc05013171</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:57</sys_updated_on>
+            <sys_updated_on>2025-08-20 18:02:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>observacao</element>
             <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:57</sys_created_on>
-            <sys_id>230f6cda9f5322107f44bcf72024abf7</sys_id>
+            <sys_created_on>2025-08-20 18:02:18</sys_created_on>
+            <sys_id>2b617d64c3abe6504d7636dc05013171</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:57</sys_updated_on>
+            <sys_updated_on>2025-08-20 18:02:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>motivo_ausencia</element>
             <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:57</sys_created_on>
-            <sys_id>a30f6cda9f5322107f44bcf72024abf7</sys_id>
+            <sys_created_on>2025-08-20 18:02:18</sys_created_on>
+            <sys_id>af617d64c3abe6504d7636dc05013171</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:57</sys_updated_on>
+            <sys_updated_on>2025-08-20 18:02:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -46,13 +46,13 @@
             <element>.begin_split</element>
             <position>3</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:57</sys_created_on>
-            <sys_id>270f6cda9f5322107f44bcf72024abf7</sys_id>
+            <sys_created_on>2025-08-20 18:02:18</sys_created_on>
+            <sys_id>27617d64c3abe6504d7636dc05013172</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:57</sys_updated_on>
+            <sys_updated_on>2025-08-20 18:02:18</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
@@ -60,13 +60,13 @@
             <element>data_ausencia</element>
             <position>4</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:57</sys_created_on>
-            <sys_id>a70f6cda9f5322107f44bcf72024abf7</sys_id>
+            <sys_created_on>2025-08-20 18:02:18</sys_created_on>
+            <sys_id>ab617d64c3abe6504d7636dc05013172</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:57</sys_updated_on>
+            <sys_updated_on>2025-08-20 18:02:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -74,13 +74,13 @@
             <element>.split</element>
             <position>5</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:57</sys_created_on>
-            <sys_id>2b0f6cda9f5322107f44bcf72024abf7</sys_id>
+            <sys_created_on>2025-08-20 18:02:18</sys_created_on>
+            <sys_id>23617d64c3abe6504d7636dc05013173</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:57</sys_updated_on>
+            <sys_updated_on>2025-08-20 18:02:18</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -88,13 +88,13 @@
             <element>approval</element>
             <position>6</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:57</sys_created_on>
-            <sys_id>ab0f6cda9f5322107f44bcf72024abf7</sys_id>
+            <sys_created_on>2025-08-20 18:02:18</sys_created_on>
+            <sys_id>a7617d64c3abe6504d7636dc05013173</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:57</sys_updated_on>
+            <sys_updated_on>2025-08-20 18:02:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -102,43 +102,15 @@
             <element>.end_split</element>
             <position>7</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:57</sys_created_on>
-            <sys_id>2f0f6cda9f5322107f44bcf72024abf7</sys_id>
+            <sys_created_on>2025-08-20 18:02:18</sys_created_on>
+            <sys_id>2f617d64c3abe6504d7636dc05013173</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:57</sys_updated_on>
+            <sys_updated_on>2025-08-20 18:02:18</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>REL.x_snc_mock_skillup_atestado.REL:b9edf0ca0a0a0b010035de2d6b579a03</element>
-            <position>8</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:57</sys_created_on>
-            <sys_id>af0f6cda9f5322107f44bcf72024abf7</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:57</sys_updated_on>
-            <sys_user/>
-            <type>list</type>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>activity.xml</element>
-            <position>9</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:25:58</sys_created_on>
-            <sys_id>230f6cda9f5322107f44bcf72024abf8</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter display_value="Activities (filtered)">444ea5c6bf310100e628555b3f0739d6</sys_ui_formatter>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_atestado" sys_domain="global" view="Default view">594b68969f5322107f44bcf72024ab65</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:25:58</sys_updated_on>
-            <sys_user/>
-            <type>formatter</type>
         </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>

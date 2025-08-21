@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_mock_skillup.CursoImportService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>CursoImportService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var CursoImportService = Class.create();
+CursoImportService.prototype = {
+  initialize: function() {},
+
+  syncFromPDI: function() {
+    // Chama o método exatamente como está criado no seu REST Message
+    var r = new sn_ws.RESTMessageV2('PDI Cursos (dev350376)', 'GET - List');
+
+    // Garante JSON (se não setar, o ServiceNow pode te devolver XML)
+    r.setRequestHeader('Accept', 'application/json');
+
+    // Campos e filtros (ajuste o query se quiser somente ativos)
+    r.setQueryParameter('sysparm_fields', 'u_template,u_training,u_duration,u_order,u_url,u_active');
+    // Exemplo sem filtro pra ver tudo: r.setQueryParameter('sysparm_query', '');
+    r.setQueryParameter('sysparm_query', '');
+    r.setQueryParameter('sysparm_limit', '2000');
+
+    var res = r.execute();
+    var status = res.getStatusCode();
+    if (status != 200) {
+      gs.error('[Cursos Sync] HTTP ' + status + ' - ' + res.getErrorMessage());
+      return;
+    }
+
+    var body = res.getBody();
+    var data = {};
+    try {
+      data = JSON.parse(body);
+    } catch (e) {
+      gs.error('[Cursos Sync] Resposta não é JSON. Verifique se o Accept=application/json está ativo. Body: ' + body);
+      return;
+    }
+    if (!data || !data.result || !data.result.length) {
+      gs.info('[Cursos Sync] Nenhum registro retornado.');
+      return;
+    }
+
+    for (var i = 0; i < data.result.length; i++) {
+      var row = data.result[i];
+
+      // Normaliza/mapeia nomes vindos da origem para os seus campos locais
+      var template     = row.u_template || '';
+      var treinamento  = row.u_training || '';  // origem em inglês
+      var duracao      = row.u_duration || 0;
+      var ordem        = row.u_order || 0;
+      var url          = row.u_url || '';
+      var ativo        = (row.u_active + '') == 'true';
+
+      // Upsert por template + treinamento + ordem
+      var gr = new GlideRecord('x_snc_mock_skillup_curso');
+      gr.addQuery('u_template', template);
+      gr.addQuery('u_treinamento', treinamento);
+      gr.addQuery('u_ordem', ordem);
+      gr.query();
+
+      if (gr.next()) {
+        gr.u_duracao = duracao;
+        gr.u_url = url;
+        gr.u_ativo = ativo;
+        gr.update();
+        gs.info('[Cursos Sync] UPDATE: ' + template + ' | ' + treinamento + ' | ordem=' + ordem);
+      } else {
+        gr.initialize();
+        gr.u_template = template;
+        gr.u_treinamento = treinamento;
+        gr.u_duracao = duracao;
+        gr.u_ordem = ordem;
+        gr.u_url = url;
+        gr.u_ativo = ativo;
+        gr.insert();
+        gs.info('[Cursos Sync] INSERT: ' + template + ' | ' + treinamento + ' | ordem=' + ordem);
+      }
+    }
+
+    gs.info('[Cursos Sync] Finalizado com sucesso.');
+  },
+
+  type: 'CursoImportService'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-20 18:10:12</sys_created_on>
+        <sys_id>8a033d28c3abe6504d7636dc050131da</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>CursoImportService</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sys_script_include_8a033d28c3abe6504d7636dc050131da</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-20 18:59:50</sys_updated_on>
+    </sys_script_include>
+</record_update>

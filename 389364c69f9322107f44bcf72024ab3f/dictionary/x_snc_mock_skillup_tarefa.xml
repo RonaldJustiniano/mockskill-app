@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="7af5e234c3a36a504d7636dc050131c6" extends="task" label="Tarefa" max_length="40" name="x_snc_mock_skillup_tarefa" type="collection">
+        <element display="true" label="Nome da tarefa" max_length="100" name="nome_da_tarefa" type="string"/>
+        <element label="Projeto" max_length="32" name="u_projeto" reference="x_snc_mock_skillup_projeto" type="reference"/>
+        <element choice="3" default="aberto" label="Status" max_length="40" name="u_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Cancelado" value="cancelado"/>
+                <element inactive_on_update="false" label="Em andamento" value="em_andamento"/>
+                <element inactive_on_update="false" label="Aberto" value="aberto"/>
+                <element inactive_on_update="false" label="Concluído" value="concluido"/>
+            </choice>
+        </element>
+    </element>
+</database>

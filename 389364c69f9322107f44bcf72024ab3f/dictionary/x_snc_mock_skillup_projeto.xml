@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="c9338638c3ef2a504d7636dc05013154" extends="task" label="Projeto" max_length="40" name="x_snc_mock_skillup_projeto" type="collection">
+        <element label="Nome do projeto" max_length="120" name="u_nome" type="string"/>
+        <element label="Diferença de Orçamento" max_length="20" name="u_diferenca_orcamento" read_only="true" type="currency"/>
+        <element label="Data de finalização" max_length="40" name="data_de_finaliza_o" type="glide_date"/>
+        <element label="Motivo do cancelamento" max_length="255" name="u_motivo_cancelamento" type="string"/>
+        <element label="Orçamento Estimado" max_length="20" name="u_orcamento_estimado" type="currency"/>
+        <element choice="3" default="aberto" display="true" label="Status" max_length="40" name="u_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Cancelado" value="cancelado"/>
+                <element inactive_on_update="false" label="Em andamento" value="em_andamento"/>
+                <element inactive_on_update="false" label="Concluído" value="concluido"/>
+                <element inactive_on_update="false" label="Aberto" value="aberto"/>
+            </choice>
+        </element>
+        <element label="Orçamento Real" max_length="20" name="u_orcamento_real" type="currency"/>
+        <element label="Gerente" max_length="32" name="u_gerente" reference="x_snc_mock_skillup_equipe" type="reference"/>
+        <element label="Data de início" max_length="40" name="u_data_inicio" type="glide_date"/>
+    </element>
+</database>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="26b8e1e8c36be6504d7636dc0501319b" max_length="40" name="x_snc_mock_skillup_curso" type="collection">
+    <element db_object_id="26b8e1e8c36be6504d7636dc0501319b" label="Curso" max_length="40" name="x_snc_mock_skillup_curso" type="collection">
         <element label="Ordem" max_length="40" name="u_ordem" type="integer"/>
         <element label="Template" max_length="100" name="u_template" type="string"/>
         <element label="Ativo" max_length="40" name="u_ativo" type="boolean"/>
+        <element display="true" label="Treinamento" max_length="100" name="u_treinamento" type="string"/>
         <element label="Duração" max_length="40" name="u_duracao" type="float"/>
         <element label="URL" max_length="1024" name="u_url" type="url"/>
     </element>

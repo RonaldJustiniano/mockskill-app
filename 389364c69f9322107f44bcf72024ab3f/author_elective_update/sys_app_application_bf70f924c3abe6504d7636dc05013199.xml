@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application">
+    <sys_app_application action="DELETE">
+        <active>true</active>
+        <category display_value="Custom Applications">e0355b31ef303000a61d5a3615c0fb78</category>
+        <description/>
+        <device_type>browser</device_type>
+        <hint/>
+        <name>Curso</name>
+        <order>100</order>
+        <roles>x_snc_mock_skillup.curso_user</roles>
+        <sys_class_name>sys_app_application</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-20 17:58:12</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>bf70f924c3abe6504d7636dc05013199</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Curso</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sys_app_application_bf70f924c3abe6504d7636dc05013199</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-20 17:58:12</sys_updated_on>
+        <title>Curso</title>
+        <view_name/>
+    </sys_app_application>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</application>
+        <file_path/>
+        <instance_id>92e52a173b67ca14a36804e0b5e45a01</instance_id>
+        <instance_name>dev280770</instance_name>
+        <name>sys_app_application_bf70f924c3abe6504d7636dc05013199</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application"><sys_app_application action="INSERT_OR_UPDATE"><active>true</active><category display_value="Custom Applications">e0355b31ef303000a61d5a3615c0fb78</category><description/><device_type>browser</device_type><hint/><name>Curso</name><order>100</order><roles>x_snc_mock_skillup.curso_user</roles><sys_class_name>sys_app_application</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-08-20 17:58:12</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>bf70f924c3abe6504d7636dc05013199</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Curso</sys_name><sys_overrides/><sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package><sys_policy/><sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope><sys_update_name>sys_app_application_bf70f924c3abe6504d7636dc05013199</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-08-20 17:58:12</sys_updated_on><title>Curso</title><view_name/></sys_app_application></record_update>]]></payload>
+        <payload_hash>1336589955</payload_hash>
+        <record_name>Curso</record_name>
+        <reverted_from/>
+        <source>20baaeb7c3d326504d7636dc050131b4</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-20 17:58:12</sys_created_on>
+        <sys_id>3370f924c3abe6504d7636dc0501319e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>198c8a1a1bb0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-20 17:58:12</sys_updated_on>
+        <type>Application Menu</type>
+        <update_guid>f370f92462abe6502a544026646bb59d</update_guid>
+        <update_guid_history>f370f92462abe6502a544026646bb59d:1336589955</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Curso">67d83920c3ebe6504d7636dc05013102</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-20 18:34:47</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_application">sys_app_application</sys_db_object>
+        <sys_id>558a0fd997024874ae45c484430cc3a9</sys_id>
+        <sys_metadata>bf70f924c3abe6504d7636dc05013199</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Curso</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_scope_delete display_value="">1ef33293978743289a870dba302e2240</sys_scope_delete>
+        <sys_update_name>sys_app_application_bf70f924c3abe6504d7636dc05013199</sys_update_name>
+        <sys_update_version display_value="sys_app_application_bf70f924c3abe6504d7636dc05013199">3370f924c3abe6504d7636dc0501319e</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-20 18:34:47</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

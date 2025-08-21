@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="7294a6f0c3a36a504d7636dc050131de" label="Alocados" max_length="40" name="x_snc_mock_skillup_alocados" type="collection">
+        <element choice="3" default="aberto" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Cancelado" value="cancelado"/>
+                <element inactive_on_update="false" label="Em andamento" value="em_andamento"/>
+                <element inactive_on_update="false" label="Aberto" value="aberto"/>
+                <element inactive_on_update="false" label="Concluído" value="concluido"/>
+            </choice>
+        </element>
+        <element label="Equipe" max_length="32" name="u_equipe" reference="x_snc_mock_skillup_equipe" type="reference"/>
+        <element display="true" label="Tarefa" max_length="32" name="u_tarefa" reference="x_snc_mock_skillup_tarefa" type="reference"/>
+        <element label="Projeto" max_length="32" name="u_projeto" reference="x_snc_mock_skillup_projeto" type="reference"/>
+        <index name="index">
+            <element name="u_equipe"/>
+        </index>
+        <index name="index2">
+            <element name="u_projeto"/>
+        </index>
+        <index name="index3">
+            <element name="u_tarefa"/>
+        </index>
+    </element>
+</database>

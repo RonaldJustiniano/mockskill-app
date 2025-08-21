@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field>u_motivo_cancelamento</field>
+        <field_message/>
+        <field_message_type>none</field_message_type>
+        <mandatory>true</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-21 14:14:48</sys_created_on>
+        <sys_id>3db68e7cc3ef2a504d7636dc050131c7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>u_motivo_cancelamento</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sys_ui_policy_action_3db68e7cc3ef2a504d7636dc050131c7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-21 14:14:48</sys_updated_on>
+        <table>x_snc_mock_skillup_projeto</table>
+        <ui_policy display_value="Exibir motivo de cancelamento quando status = Cancelado">036646b8c3ef2a504d7636dc050131fe</ui_policy>
+        <value/>
+        <value_action>ignore</value_action>
+        <visible>true</visible>
+    </sys_ui_policy_action>
+    <sys_translated_text action="delete_multiple" query="documentkey=3db68e7cc3ef2a504d7636dc050131c7"/>
+</record_update>
