@@ -5,10 +5,10 @@
         <element display="true" label="Numero" mandatory="true" max_length="40" name="u_numero" type="integer"/>
         <element choice="3" default="solicitado" label="Status" max_length="40" name="u_status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Reprovado" value="reprovado"/>
-                <element inactive_on_update="false" label="Solicitado" value="solicitado"/>
-                <element inactive_on_update="false" label="Cancelado" value="cancelado"/>
-                <element inactive_on_update="false" label="Aprovado" value="aprovado"/>
+                <element inactive_on_update="false" label="Reprovado" value="rejected"/>
+                <element inactive_on_update="false" label="Solicitado" value="requested"/>
+                <element inactive_on_update="false" label="Cancelado" value="cancelled"/>
+                <element inactive_on_update="false" label="Aprovado" value="approved"/>
             </choice>
         </element>
         <element label="Data fim" mandatory="true" max_length="40" name="u_data_fim" type="glide_date"/>
