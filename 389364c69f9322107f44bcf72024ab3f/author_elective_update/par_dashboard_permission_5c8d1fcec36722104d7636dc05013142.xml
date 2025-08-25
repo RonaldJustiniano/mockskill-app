@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_permission">
+    <par_dashboard_permission action="DELETE">
+        <can_read>true</can_read>
+        <can_share>true</can_share>
+        <can_write>true</can_write>
+        <dashboard display_value="Mock SkillUp – Operações">588d1fcec36722104d7636dc0501313f</dashboard>
+        <group/>
+        <owner>true</owner>
+        <role/>
+        <sys_class_name>par_dashboard_permission</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-25 17:45:21</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5c8d1fcec36722104d7636dc05013142</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>588d1fcec36722104d7636dc0501313f</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>par_dashboard_permission_5c8d1fcec36722104d7636dc05013142</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-25 17:45:21</sys_updated_on>
+        <user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</user>
+    </par_dashboard_permission>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</application>
+        <file_path/>
+        <instance_id>92e52a173b67ca14a36804e0b5e45a01</instance_id>
+        <instance_name>dev280770</instance_name>
+        <name>par_dashboard_permission_5c8d1fcec36722104d7636dc05013142</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_permission"><par_dashboard_permission action="INSERT_OR_UPDATE"><can_read>true</can_read><can_share>true</can_share><can_write>true</can_write><dashboard display_value="Mock SkillUp – Operações">588d1fcec36722104d7636dc0501313f</dashboard><group/><owner>true</owner><role/><sys_class_name>par_dashboard_permission</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-08-25 17:45:21</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>5c8d1fcec36722104d7636dc05013142</sys_id><sys_mod_count>0</sys_mod_count><sys_name>588d1fcec36722104d7636dc0501313f</sys_name><sys_overrides/><sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package><sys_policy/><sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope><sys_update_name>par_dashboard_permission_5c8d1fcec36722104d7636dc05013142</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-08-25 17:45:21</sys_updated_on><user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</user></par_dashboard_permission></record_update>]]></payload>
+        <payload_hash>-985083079</payload_hash>
+        <record_name>588d1fcec36722104d7636dc0501313f</record_name>
+        <reverted_from/>
+        <source>20baaeb7c3d326504d7636dc050131b4</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-25 17:45:21</sys_created_on>
+        <sys_id>9c8d1fcec36722104d7636dc05013146</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>198e255aab30000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-25 17:45:21</sys_updated_on>
+        <type>PAR Dashboard Permission</type>
+        <update_guid>508d1fce8b6722107227b5cd15fce146</update_guid>
+        <update_guid_history>508d1fce8b6722107227b5cd15fce146:-985083079</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">388e5b42c3a722104d7636dc0501310e</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-25 17:49:46</sys_created_on>
+        <sys_db_object display_value="" name="par_dashboard_permission">par_dashboard_permission</sys_db_object>
+        <sys_id>06da926b8add43fc8085d08737e2d4c4</sys_id>
+        <sys_metadata>5c8d1fcec36722104d7636dc05013142</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>588d1fcec36722104d7636dc0501313f</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_scope_delete display_value="">1ef33293978743289a870dba302e2240</sys_scope_delete>
+        <sys_update_name>par_dashboard_permission_5c8d1fcec36722104d7636dc05013142</sys_update_name>
+        <sys_update_version display_value="par_dashboard_permission_5c8d1fcec36722104d7636dc05013142">9c8d1fcec36722104d7636dc05013146</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-25 17:49:46</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

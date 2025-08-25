@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_canvas">
+    <par_dashboard_canvas action="INSERT_OR_UPDATE">
+        <dashboard display_value="Mock SkillUp – Operações">3e8e5742c3a722104d7636dc050131b5</dashboard>
+        <dashboard_tab display_value="New Tab 1">b28e5b42c3a722104d7636dc050131e3</dashboard_tab>
+        <layout>[{"sys_id":"3302a386c3a722104d7636dc050131b5","x":0,"y":0,"w":12,"h":12,"component_id":"d24d53f60350de7a652caf3188a46ed2","component_props":"{\"configVersion\":null,\"scoreSize\":\"auto\",\"headingPosition\":\"top\",\"sparklineStyle\":\"area\",\"scoreIcon\":\"\",\"iconStyle\":\"background\",\"showScoreDate\":false,\"chartSize\":null,\"useRelativeScoreTime\":false,\"showScoreUpdateTime\":false,\"showZero\":true,\"colorConfig\":null,\"newReporting\":false,\"enableAddZerosAtApi\":true,\"additionalGroupByConfig\":[],\"dataSources\":null,\"showHeader\":true,\"showTotalAggregate\":false,\"showSubAggregate\":false,\"showFirstGroupAggregate\":false,\"showSecondGroupAggregate\":false,\"hideMatrixAggregate\":false,\"wrapTitle\":false,\"showLoadingIndicator\":false,\"showHeaderSeparator\":false,\"contextMenuActions\":[],\"title\":null,\"headerTitle\":null,\"headingLevel\":2,\"description\":null,\"showBorder\":true,\"groupByConfig\":null,\"bareBorder\":false,\"formats\":null,\"dataCategory\":null,\"telemetry\":null,\"showDataPassthrough\":false,\"showAdditionalGroupBySelector\":false,\"allowAdditionalGroupByPerMetric\":false,\"metrics\":null,\"groupBy\":null,\"filterPerMetric\":null,\"sortBy\":null,\"sortByOrder\":\"desc\",\"trendBy\":null,\"showChange\":false,\"showChangePercentage\":false,\"showTarget\":false,\"showForecast\":false,\"forecastConfig\":null,\"showForecastRange\":false,\"showTrend\":false,\"showConfidenceBand\":false,\"showGapPercentage\":false,\"showSparkline\":false,\"showMetricLabel\":false,\"showThreshold\":false,\"showComment\":false,\"showTotalValue\":null,\"followFilters\":true,\"showFilterIcon\":true,\"enableRealTimeUpdate\":false,\"enableDrilldown\":true,\"enableClickAndStay\":false,\"showDataTable\":false,\"enableCustomEmptyState\":false,\"componentId\":null,\"emptyStateIllustration\":\"no-data\",\"emptyStateHeading\":\"No data available.\",\"emptyStateHeadingLevel\":3,\"emptyStateContent\":\"There are no scores available for the selected criteria. Contact your admin for more info.\",\"emptyStateAlignment\":\"vertical-centered\",\"refreshFrequency\":null,\"backgroundRefreshInterval\":null,\"standardFormatData\":null,\"hideDevSettings\":false,\"configPropModifiers\":{},\"filterConfigurations\":\"@state.parFilters\",\"showMaximumRange\":false,\"allowChangeDateRange\":false,\"showDateRangeByDefault\":false,\"applyDateRange\":false,\"chartExtraConfig\":null,\"numberOfPeriods\":3,\"showAbsolutePeriod\":false,\"scoreType\":\"latest\",\"showChangeFrom\":\"previous\",\"startTime\":null,\"endTime\":null,\"useCurrentDateForEnd\":false,\"period\":\"M\",\"useDataCache\":false,\"cacheExpirationTime\":0,\"showCacheTime\":true,\"isComponentInView\":null,\"pageId\":null,\"dateFormat\":\"default\",\"showRefresh\":true,\"showFilterAsSeparateSeries\":false}","can_edit":true}]</layout>
+        <sys_class_name>par_dashboard_canvas</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-25 17:49:55</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>878e5b42c3a722104d7636dc050131e5</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>par_dashboard_canvas_878e5b42c3a722104d7636dc050131e5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-25 18:05:15</sys_updated_on>
+    </par_dashboard_canvas>
+</record_update>

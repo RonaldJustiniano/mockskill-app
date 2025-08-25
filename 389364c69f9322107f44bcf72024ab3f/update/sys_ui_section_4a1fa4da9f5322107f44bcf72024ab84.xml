@@ -4,13 +4,13 @@
             <element>nome</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>9f2f601e9f5322107f44bcf72024ab28</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>28ea6742c3e722104d7636dc0501315d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>email</element>
             <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>132f601e9f5322107f44bcf72024ab29</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>e0ea6742c3e722104d7636dc0501315e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>.begin_split</element>
             <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>932f601e9f5322107f44bcf72024ab29</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>68ea6742c3e722104d7636dc0501315e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
@@ -46,13 +46,13 @@
             <element>data_nascimento</element>
             <position>3</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>172f601e9f5322107f44bcf72024ab29</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>ecea6742c3e722104d7636dc0501315e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -60,13 +60,13 @@
             <element>.split</element>
             <position>4</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>972f601e9f5322107f44bcf72024ab29</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>64ea6742c3e722104d7636dc0501315f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -74,13 +74,13 @@
             <element>idade</element>
             <position>5</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>1b2f601e9f5322107f44bcf72024ab29</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>e8ea6742c3e722104d7636dc0501315f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -88,13 +88,13 @@
             <element>.end_split</element>
             <position>6</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>9b2f601e9f5322107f44bcf72024ab29</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>60ea6742c3e722104d7636dc05013160</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
@@ -102,13 +102,13 @@
             <element>departamento</element>
             <position>7</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>1f2f601e9f5322107f44bcf72024ab29</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>e4ea6742c3e722104d7636dc05013160</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -116,69 +116,27 @@
             <element>supervisor</element>
             <position>8</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>9f2f601e9f5322107f44bcf72024ab29</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>6cea6742c3e722104d7636dc05013160</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>user_id</element>
-            <position>9</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>132f601e9f5322107f44bcf72024ab2a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>activity.xml</element>
-            <position>10</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>932f601e9f5322107f44bcf72024ab2a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter display_value="Activities (filtered)">444ea5c6bf310100e628555b3f0739d6</sys_ui_formatter>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
-            <sys_user/>
-            <type>formatter</type>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>REL.x_snc_mock_skillup_colaborador.REL:b9edf0ca0a0a0b010035de2d6b579a03</element>
-            <position>11</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-13 13:26:30</sys_created_on>
-            <sys_id>a32f601e9f5322107f44bcf72024ab30</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-13 13:26:30</sys_updated_on>
-            <sys_user/>
-            <type>list</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>localizacao</element>
-            <position>12</position>
+            <position>9</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-18 16:03:09</sys_created_on>
-            <sys_id>87f243f7c35726504d7636dc050131ce</sys_id>
+            <sys_created_on>2025-08-25 18:43:49</sys_created_on>
+            <sys_id>e0ea6742c3e722104d7636dc05013161</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_colaborador" sys_domain="global" view="Default view">4a1fa4da9f5322107f44bcf72024ab84</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-18 16:03:09</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:43:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

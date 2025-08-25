@@ -2,7 +2,7 @@
     <element audit="true" db_object_id="9c57e80e9f9322107f44bcf72024abb1" label="Supervisor" max_length="40" name="x_snc_mock_skillup_supervisor" type="collection">
         <element label="Usuario" max_length="32" name="usuario" reference="sys_user" type="reference"/>
         <element label="Email" mandatory="true" max_length="100" name="email" type="string"/>
-        <element label="Departamento" max_length="100" name="departamento" type="string"/>
+        <element label="Departamento" max_length="100" name="departamento" reference="cmn_department" type="reference"/>
         <element label="Localização" max_length="32" name="localizacao" reference="cmn_location" type="reference"/>
         <element display="true" label="Nome" mandatory="true" max_length="100" name="nome" type="string"/>
         <index name="index">

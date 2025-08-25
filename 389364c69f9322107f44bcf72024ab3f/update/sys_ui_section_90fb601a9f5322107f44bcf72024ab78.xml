@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
     <sys_ui_section caption="" section_id="90fb601a9f5322107f44bcf72024ab78" sys_domain="global" table="x_snc_mock_skillup_supervisor" version="3" view="">
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>email</element>
+            <element>nome</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-18 14:56:51</sys_created_on>
-            <sys_id>7bc37237c31726504d7636dc05013162</sys_id>
+            <sys_created_on>2025-08-25 18:53:32</sys_created_on>
+            <sys_id>871d6b06c3e722104d7636dc050131cc</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_supervisor" sys_domain="global" view="Default view">90fb601a9f5322107f44bcf72024ab78</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-18 14:56:51</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:53:32</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>nome</element>
+            <element>email</element>
             <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-18 14:56:51</sys_created_on>
-            <sys_id>ffc37237c31726504d7636dc05013162</sys_id>
+            <sys_created_on>2025-08-25 18:53:32</sys_created_on>
+            <sys_id>0f1d6b06c3e722104d7636dc050131cc</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_supervisor" sys_domain="global" view="Default view">90fb601a9f5322107f44bcf72024ab78</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-18 14:56:51</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:53:32</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>departamento</element>
             <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-18 14:56:51</sys_created_on>
-            <sys_id>77c37237c31726504d7636dc05013163</sys_id>
+            <sys_created_on>2025-08-25 18:53:32</sys_created_on>
+            <sys_id>831d6b06c3e722104d7636dc050131cd</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_supervisor" sys_domain="global" view="Default view">90fb601a9f5322107f44bcf72024ab78</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-18 14:56:51</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:53:32</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -46,13 +46,13 @@
             <element>usuario</element>
             <position>3</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-18 14:56:51</sys_created_on>
-            <sys_id>fbc37237c31726504d7636dc05013163</sys_id>
+            <sys_created_on>2025-08-25 18:53:32</sys_created_on>
+            <sys_id>0b1d6b06c3e722104d7636dc050131cd</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_supervisor" sys_domain="global" view="Default view">90fb601a9f5322107f44bcf72024ab78</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-18 14:56:51</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:53:32</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -60,13 +60,13 @@
             <element>localizacao</element>
             <position>4</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-08-18 16:03:43</sys_created_on>
-            <sys_id>db1347f7c35726504d7636dc05013133</sys_id>
+            <sys_created_on>2025-08-25 18:53:32</sys_created_on>
+            <sys_id>8f1d6b06c3e722104d7636dc050131cd</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_supervisor" sys_domain="global" view="Default view">90fb601a9f5322107f44bcf72024ab78</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-08-18 16:03:43</sys_updated_on>
+            <sys_updated_on>2025-08-25 18:53:32</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
