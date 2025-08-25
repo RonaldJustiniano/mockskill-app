@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="42bd6a42c3a322104d7636dc05013140" label="Solicitação de Férias" max_length="40" name="x_snc_mock_skillup_solicitacao_ferias" type="collection">
+        <element label="dias" max_length="40" name="u_dias" read_only="true" type="integer"/>
+        <element label="data inicio" mandatory="true" max_length="40" name="u_data_inicio" type="glide_date"/>
+        <element display="true" label="Numero" mandatory="true" max_length="40" name="u_numero" type="integer"/>
+        <element choice="3" default="solicitado" label="Status" max_length="40" name="u_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Reprovado" value="reprovado"/>
+                <element inactive_on_update="false" label="Solicitado" value="solicitado"/>
+                <element inactive_on_update="false" label="Cancelado" value="cancelado"/>
+                <element inactive_on_update="false" label="Aprovado" value="aprovado"/>
+            </choice>
+        </element>
+        <element label="Data fim" mandatory="true" max_length="40" name="u_data_fim" type="glide_date"/>
+        <element label="Retorno previsto" max_length="40" name="u_retorno_previsto" read_only="true" type="glide_date"/>
+        <element label="Justificativa" max_length="250" name="u_justificativa" type="string_full_utf8"/>
+        <element label="Colaborador" mandatory="true" max_length="32" name="u_colaborador" reference="x_snc_mock_skillup_colaborador" type="reference"/>
+        <element label="Observações" max_length="4000" name="u_observacoes" type="journal_input"/>
+        <index name="index">
+            <element name="u_colaborador"/>
+        </index>
+    </element>
+</database>

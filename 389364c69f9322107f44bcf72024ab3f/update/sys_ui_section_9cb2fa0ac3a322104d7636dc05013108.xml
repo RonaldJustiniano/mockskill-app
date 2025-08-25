@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="9cb2fa0ac3a322104d7636dc05013108" sys_domain="global" table="x_snc_mock_skillup_solicitacao_ferias" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>24b2fa0ac3a322104d7636dc05013110</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_colaborador</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>ecb2fa0ac3a322104d7636dc05013110</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_data_inicio</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>64b2fa0ac3a322104d7636dc05013111</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_data_fim</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>e8b2fa0ac3a322104d7636dc05013111</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>60b2fa0ac3a322104d7636dc05013112</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_dias</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>e4b2fa0ac3a322104d7636dc05013112</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_retorno_previsto</element>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>6cb2fa0ac3a322104d7636dc05013112</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_status</element>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>24b2324ac3a322104d7636dc050131db</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>a8b2324ac3a322104d7636dc050131db</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_justificativa</element>
+            <position>9</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>20b2324ac3a322104d7636dc050131dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_observacoes</element>
+            <position>10</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>a4b2324ac3a322104d7636dc050131dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_numero</element>
+            <position>11</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_id>2cb2324ac3a322104d7636dc050131dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_mock_skillup_solicitacao_ferias" sys_domain="global" view="Default view">9cb2fa0ac3a322104d7636dc05013108</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_mock_skillup_solicitacao_ferias</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-08-25 14:38:19</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9cb2fa0ac3a322104d7636dc05013108</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_mock_skillup_solicitacao_ferias</sys_name>
+            <sys_overrides/>
+            <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+            <sys_update_name>sys_ui_section_9cb2fa0ac3a322104d7636dc05013108</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-08-25 14:38:19</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>u_data_fim</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>ferias - validar data fim</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+  if (isLoading) return;
+
+  var ini = g_form.getValue('u_data_inicio');
+  var fim = g_form.getValue('u_data_fim');
+  if (ini && fim) {
+    var dIni = new Date(ini);
+    var dFim = new Date(fim);
+
+    if (dFim < dIni) {
+      g_form.showFieldMsg('u_data_fim', 'A data de fim não pode ser anterior à data de início.', 'error');
+    } else {
+      g_form.hideFieldMsg('u_data_fim', true);
+    }
+  }
+}
+]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-25 14:27:16</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d600b246c3a322104d7636dc05013197</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ferias - validar data fim</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sys_script_client_d600b246c3a322104d7636dc05013197</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-25 14:27:16</sys_updated_on>
+        <table>x_snc_mock_skillup_solicitacao_ferias</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

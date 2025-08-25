@@ -74,8 +74,7 @@
         <sc_ic_item_staging/>
         <sc_ic_version/>
         <sc_template/>
-        <script><![CDATA[// Record Producer: Importar Bugs em Lote (robusto: ; ou , e sinônimos de cabeçalho)
-// Target table: x_snc_mock_skillup_bug_lote
+        <script><![CDATA[
 (function executeProducer(current, producer) {
   try {
     // 1) Salva o registro do lote (para receber o anexo)
@@ -112,7 +111,7 @@
         var ch = line.charAt(i);
         if (ch === '"') {
           if (inQuote && i + 1 < line.length && line.charAt(i + 1) === '"') {
-            cur += '"'; i++; // escape de aspas
+            cur += '"'; i++; 
           } else {
             inQuote = !inQuote;
           }
@@ -131,7 +130,7 @@
       s = ("" + s).toLowerCase();
       s = s.replace(/['"`]/g, "");
       s = s.replace(/\s+/g, "");
-      s = s.replace(/[^\w]/g, ""); // remove não-alfanumérico/_ 
+      s = s.replace(/[^\w]/g, ""); 
       return s;
     }
     function findIndex(colsRaw, candidates) {
@@ -147,7 +146,7 @@
     var colsRaw = parseLine(headerLine, delimiter);
     var headerMsg = colsRaw.join(" | ");
 
-    // Possíveis nomes (aceita PT/EN e variações)
+
     var idxShort = findIndex(colsRaw, ["short_description","shortdescription","summary","titulo","resumo","title"]);
     var idxDesc  = findIndex(colsRaw, ["description","descricao","descrição","details","detalhes"]);
     var idxPrio  = findIndex(colsRaw, ["priority","prioridade","prio"]);
@@ -243,14 +242,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-21 19:20:36</sys_created_on>
         <sys_id>6b9c03f4c3676a504d7636dc050131ed</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>Reportar Bug em Lote</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sc_cat_item_producer_6b9c03f4c3676a504d7636dc050131ed</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-25 13:57:40</sys_updated_on>
+        <sys_updated_on>2025-08-25 14:09:43</sys_updated_on>
         <table_name>x_snc_mock_skillup_bug_lote</table_name>
         <taxonomy_topic/>
         <template/>
@@ -258,7 +257,7 @@
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
         <vendor/>
-        <version>16</version>
+        <version>17</version>
         <view/>
         <visible_bundle>true</visible_bundle>
         <visible_guide>true</visible_guide>
