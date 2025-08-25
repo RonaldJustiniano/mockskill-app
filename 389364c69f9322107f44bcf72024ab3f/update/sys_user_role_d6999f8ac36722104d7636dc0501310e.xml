@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description>Gerencia Certificados e Alocações.</description>
+        <elevated_privilege>false</elevated_privilege>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_snc_mock_skillup.cert_manager</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>cert_manager</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-25 17:28:29</sys_created_on>
+        <sys_id>d6999f8ac36722104d7636dc0501310e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_mock_skillup.cert_manager</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sys_user_role_d6999f8ac36722104d7636dc0501310e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-25 17:28:29</sys_updated_on>
+    </sys_user_role>
+</record_update>
