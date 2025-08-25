@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="b9ce924ec32322104d7636dc050131c4" extends="sys_import_set_row" label="BUG - Lote" max_length="40" name="x_snc_mock_skillup_bug_lote" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=state" label="state" max_length="40" name="u_state" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=description" label="description" max_length="109" name="u_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=assigned_to_email" label="assigned_to_email" max_length="40" name="u_assigned_to_email" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=priority" label="priority" max_length="40" name="u_priority" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=short_description" label="short_description" max_length="54" name="u_short_description" type="string"/>
+    </element>
+</database>
