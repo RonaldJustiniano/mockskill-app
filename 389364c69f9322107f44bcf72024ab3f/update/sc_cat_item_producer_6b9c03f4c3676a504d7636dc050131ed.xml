@@ -6,7 +6,7 @@
         <availability>on_desktop</availability>
         <billable>false</billable>
         <can_cancel>false</can_cancel>
-        <category/>
+        <category display_value="Bug">bc59a6cac36322104d7636dc05013122</category>
         <checked_out/>
         <cost>0</cost>
         <custom_cart/>
@@ -74,255 +74,166 @@
         <sc_ic_item_staging/>
         <sc_ic_version/>
         <sc_template/>
-        <script><![CDATA[(function executeProducerScript() {
-	// ========= CONFIG =========
-	var FALLBACK_TABLE = 'x_snc_mock_skillup_bug'; // ajuste se o nome técnico da sua tabela for diferente
-	var ATTACH_REQUIRED_VAR = 'csv_file';         // nome da variável Attachment criada
-	// =========================
+        <script><![CDATA[// Record Producer: Importar Bugs em Lote (robusto: ; ou , e sinônimos de cabeçalho)
+// Target table: x_snc_mock_skillup_bug_lote
+(function executeProducer(current, producer) {
+  try {
+    // 1) Salva o registro do lote (para receber o anexo)
+    var loteSysId = current.insert();
+    if (!loteSysId) { gs.addErrorMessage("Falha ao criar registro do lote."); return; }
 
+    // 2) Localiza o último .csv anexado
+    var att = new GlideRecord("sys_attachment");
+    att.addQuery("table_name", "x_snc_mock_skillup_bug_lote");
+    att.addQuery("table_sys_id", loteSysId);
+    att.addQuery("file_name", "ENDSWITH", ".csv");
+    att.orderByDesc("sys_created_on");
+    att.setLimit(1);
+    att.query();
+    if (!att.next()) { gs.addErrorMessage("Nenhum CSV anexado."); return; }
 
+    // 3) Lê o conteúdo do arquivo (UTF-8) e remove BOM
+    var gsa = new GlideSysAttachment();
+    var text = gsa.getContent(att);
+    if (!text) { gs.addErrorMessage("Não foi possível ler o CSV."); return; }
+    text = ("" + text).replace(/^\uFEFF/, "");
 
-	// Não criar o registro “vazio” do Producer. Vamos criar somente os bugs do CSV
-	current.setAbortAction(true);
+    // 4) Descobre delimitador (prioriza ';' se existir no header)
+    var allLines = ("" + text).split(/\r?\n/).filter(function(ln){ return (ln || "").trim().length > 0; });
+    if (allLines.length < 2) { gs.addErrorMessage("CSV vazio ou sem dados."); return; }
 
-	function getTargetTable() {
-		try { if (producer && producer.table_name) return String(producer.table_name); } catch (e) {}
-		return FALLBACK_TABLE;
-	}
+    var headerLine = allLines[0];
+    var delimiter = headerLine.indexOf(";") > -1 ? ";" : ",";
 
-	function getAllAttachmentsFromCurrent() {
-		// Lê anexos desta submissão (a variável Attachment anexa os arquivos em 'current')
-		var ids = [];
-		var att = new GlideRecord('sys_attachment');
-		att.addQuery('table_sys_id', current.getUniqueValue());
-		att.orderByDesc('sys_created_on');
-		att.query();
-		while (att.next()) ids.push(att.getUniqueValue());
-		return ids;
-	}
+    // 5) Parser de linha que respeita aspas e delimitadores dentro de aspas
+    function parseLine(line, delim) {
+      var out = [], cur = "", inQuote = false;
+      for (var i = 0; i < line.length; i++) {
+        var ch = line.charAt(i);
+        if (ch === '"') {
+          if (inQuote && i + 1 < line.length && line.charAt(i + 1) === '"') {
+            cur += '"'; i++; // escape de aspas
+          } else {
+            inQuote = !inQuote;
+          }
+        } else if (ch === delim && !inQuote) {
+          out.push(cur); cur = "";
+        } else {
+          cur += ch;
+        }
+      }
+      out.push(cur);
+      return out;
+    }
 
-	function readAttachmentAsString(sysAttachmentSysId) {
-		var gsa = new GlideSysAttachment();
-		var bytes = gsa.getBytes(sysAttachmentSysId);
-		if (!bytes) throw 'Falha ao ler o anexo (sys_id=' + sysAttachmentSysId + ').';
-		// Converte bytes -> string (UTF-8)
-		return GlideStringUtil.base64Decode(GlideStringUtil.base64Encode(bytes));
-	}
+    // 6) Normalizador de nomes de coluna
+    function canon(s) {
+      s = ("" + s).toLowerCase();
+      s = s.replace(/['"`]/g, "");
+      s = s.replace(/\s+/g, "");
+      s = s.replace(/[^\w]/g, ""); // remove não-alfanumérico/_ 
+      return s;
+    }
+    function findIndex(colsRaw, candidates) {
+      for (var i = 0; i < colsRaw.length; i++) {
+        var c = canon(colsRaw[i]);
+        for (var j = 0; j < candidates.length; j++) {
+          if (c === candidates[j]) return i;
+        }
+      }
+      return -1;
+    }
 
-	function detectDelimiter(headerLine) {
-		if (headerLine.indexOf('\t') > -1) return '\t';
-		if (headerLine.indexOf(';') > -1)  return ';';
-		return ','; // default
-	}
+    var colsRaw = parseLine(headerLine, delimiter);
+    var headerMsg = colsRaw.join(" | ");
 
-	function splitCSVLine(line, delim) {
-		// Parser simples – suficiente para nosso template
-		return line.split(delim).map(function (s) { return s.trim(); });
-	}
+    // Possíveis nomes (aceita PT/EN e variações)
+    var idxShort = findIndex(colsRaw, ["short_description","shortdescription","summary","titulo","resumo","title"]);
+    var idxDesc  = findIndex(colsRaw, ["description","descricao","descrição","details","detalhes"]);
+    var idxPrio  = findIndex(colsRaw, ["priority","prioridade","prio"]);
+    var idxState = findIndex(colsRaw, ["state","status","estado"]);
+    var idxMail  = findIndex(colsRaw, ["assigned_to_email","assignedtoemail","assigneeemail","email","assigned_to","assignedto","assignee","username","user","login"]);
 
-	function toIntOrNull(v) {
-		if (v === null || v === undefined) return null;
-		var n = parseInt(('' + v).trim(), 10);
-		return isNaN(n) ? null : n;
-	}
+    if (idxShort === -1 || idxDesc === -1 || idxPrio === -1 || idxState === -1 || idxMail === -1) {
+      gs.addErrorMessage("Cabeçalho inválido. Detectado: " + headerMsg + " | Delimitador: '" + delimiter + "'. " +
+        "Esperado colunas equivalentes a: short_description; description; priority; state; assigned_to_email");
+      return;
+    }
 
-	function looksLikeSysId(s) {
-		return s && s.length === 32 && /^[0-9a-f]{32}$/.test(s);
-	}
+    // 7) Helpers de normalização
+    function normPriority(v) {
+      if (!v) return "3 - Moderate";
+      v = ("" + v).toLowerCase().trim();
+      if (v.indexOf("1") === 0 || v.indexOf("critical") > -1 || v.indexOf("critica") > -1) return "1 - Critical";
+      if (v.indexOf("2") === 0 || v.indexOf("high") > -1 || v.indexOf("alta") > -1)     return "2 - High";
+      if (v.indexOf("3") === 0 || v.indexOf("moderate") > -1 || v.indexOf("normal") > -1 || v.indexOf("media") > -1 || v.indexOf("média") > -1) return "3 - Moderate";
+      if (v.indexOf("4") === 0 || v.indexOf("low") > -1 || v.indexOf("baixa") > -1)     return "4 - Low";
+      return "3 - Moderate";
+    }
+    function normState(v) {
+      if (!v) return "Open"; // seu padrão
+      v = ("" + v).toLowerCase().trim();
+      if (v.indexOf("open") > -1 || v.indexOf("new") > -1 || v === "novo") return "Open";
+      if (v.indexOf("progress") > -1 || v.indexOf("working") > -1)         return "In Progress";
+      if (v.indexOf("hold") > -1 || v.indexOf("aguardo") > -1)             return "On Hold";
+      if (v.indexOf("resolved") > -1 || v.indexOf("resolvido") > -1)       return "Resolved";
+      if (v.indexOf("closed") > -1 || v.indexOf("fechado") > -1)           return "Closed";
+      return "Open";
+    }
+    function findUser(val) {
+      if (!val) return "";
+      val = ("" + val).trim();
+      var u = new GlideRecord("sys_user");
+      if (val.indexOf("@") > -1) {
+        u.addQuery("email", val);
+      } else {
+        // tenta user_name, depois name
+        var q = u.addQuery("user_name", val);
+        q.addOrCondition("name", val);
+      }
+      u.setLimit(1); u.query();
+      if (u.next()) return u.getUniqueValue();
+      gs.warn("Bug Import - usuário não encontrado: " + val);
+      return "";
+    }
 
-	function mapPriority(value) {
-		if (value == null || value === '') return null;
-		var n = toIntOrNull(value);
-		if (n != null) return n; // 1..5
-		var t = ('' + value).toLowerCase().trim();
-		if (t.indexOf('crit') === 0) return 1;                 // Critical
-		if (t === 'alta' || t.indexOf('high') === 0) return 2; // High
-		if (t === 'media' || t === 'média' || t.indexOf('mod') === 0) return 3; // Moderate
-		if (t === 'baixa' || t.indexOf('low') === 0) return 4; // Low
-		if (t.indexOf('plan') === 0) return 5;                 // Planning
-		return null;
-	}
+    var inserted = 0, skipped = 0;
 
-	function mapState(value) {
-		// Ajuste se sua tabela tiver choices diferentes
-		// Task comum: 1-New, 2-In Progress, 3-On Hold, 6-Resolved, 7-Closed
-		if (value == null || value === '') return null;
-		var n = toIntOrNull(value);
-		if (n != null) return n;
-		var t = ('' + value).toLowerCase().trim();
-		if (t.indexOf('new') === 0 || t === 'novo') return 1;
-		if (t.indexOf('in progress') === 0 || t === 'em andamento') return 2;
-		if (t.indexOf('hold') > -1 || t.indexOf('pausa') > -1) return 3;
-		if (t.indexOf('resol') === 0) return 6;
-		if (t.indexOf('clos') === 0 || t === 'fechado') return 7;
-		return null;
-	}
+    // 8) Processa linhas de dados
+    for (var r = 1; r < allLines.length; r++) {
+      var raw = allLines[r];
+      if (!raw || !raw.trim()) continue;
 
-	function findUserSysId(token) {
-		if (!token) return null;
-		var v = ('' + token).trim();
-		if (looksLikeSysId(v)) return v;
+      var parts = parseLine(raw, delimiter);
+      // garante tamanho
+      while (parts.length < colsRaw.length) parts.push("");
 
-		var u = new GlideRecord('sys_user');
-		// 1) Email exato
-		u.addQuery('email', v);
-		u.setLimit(1);
-		u.query();
-		if (u.next()) return String(u.getUniqueValue());
+      var sd   = (parts[idxShort] || "").trim();
+      var desc = (parts[idxDesc]  || "").trim();
+      var pri  = normPriority(parts[idxPrio]);
+      var st   = normState(parts[idxState]);
+      var who  = (parts[idxMail]  || "").trim();
+      var assg = findUser(who);
 
-		// 2) Username exato
-		u.initialize();
-		u.addQuery('user_name', v);
-		u.setLimit(1);
-		u.query();
-		if (u.next()) return String(u.getUniqueValue());
+      if (!sd) { skipped++; continue; }
 
-		// 3) Name (começa com) – fallback leve
-		u.initialize();
-		u.addQuery('name', 'STARTSWITH', v);
-		u.setLimit(1);
-		u.query();
-		if (u.next()) return String(u.getUniqueValue());
+      var bug = new GlideRecord("x_snc_mock_skillup_bug");
+      bug.initialize();
+      bug.short_description = sd;
+      bug.description = desc;
+      bug.priority = pri;
+      bug.state = st;
+      if (assg) bug.assigned_to = assg;
 
-		return null;
-	}
+      if (bug.insert()) inserted++; else skipped++;
+    }
 
-	function findGroupSysId(token) {
-		if (!token) return null;
-		var v = ('' + token).trim();
-		if (looksLikeSysId(v)) return v;
-
-		var g = new GlideRecord('sys_user_group');
-		// Nome exato
-		g.addQuery('name', v);
-		g.setLimit(1);
-		g.query();
-		if (g.next()) return String(g.getUniqueValue());
-
-		// Começa com – fallback leve
-		g.initialize();
-		g.addQuery('name', 'STARTSWITH', v);
-		g.setLimit(1);
-		g.query();
-		if (g.next()) return String(g.getUniqueValue());
-
-		return null;
-	}
-
-	function setIfValid(gr, field, value) {
-		if (!gr.isValidField(field)) return;
-		if (value === '' || value == null) return;
-		gr.setValue(field, value);
-	}
-
-	function idx(headers, key) { return headers.indexOf(key); }
-
-	// ===== EXECUÇÃO =====
-	// Garante que a variável de attachment foi usada
-	if (!producer || !producer[ATTACH_REQUIRED_VAR]) {
-		gs.addErrorMessage('Anexe o arquivo CSV no campo "' + ATTACH_REQUIRED_VAR + '".');
-		return;
-	}
-
-	var tableName = getTargetTable();
-	var attachments = getAllAttachmentsFromCurrent();
-	if (!attachments || attachments.length === 0) {
-		gs.addErrorMessage('Nenhum anexo encontrado nesta submissão. Use o campo de anexo "' + ATTACH_REQUIRED_VAR + '".');
-		return;
-	}
-
-	var created = 0, skipped = 0, userMiss = 0, groupMiss = 0, processedFiles = 0;
-
-	for (var a = 0; a < attachments.length; a++) {
-		var raw = readAttachmentAsString(attachments[a]);
-		if (!raw) continue;
-
-		processedFiles++;
-
-		// Remove BOM se houver
-		if (raw.charCodeAt(0) === 0xFEFF) raw = raw.slice(1);
-
-		var lines = raw.split(/\r?\n/).filter(function (l) { return l.trim().length > 0; });
-		if (lines.length < 2) { skipped++; continue; }
-
-		var delimiter = detectDelimiter(lines[0]);
-		var headers = splitCSVLine(lines[0], delimiter).map(function (h) { return h.toLowerCase(); });
-
-		var mapIdx = {
-			short_description: idx(headers, 'short_description'),
-			description:       idx(headers, 'description'),
-			priority:          idx(headers, 'priority'),
-			state:             idx(headers, 'state'),
-			assigned_to:       idx(headers, 'assigned_to'),
-			assignment_group:  idx(headers, 'assignment_group')
-		};
-
-		for (var i = 1; i < lines.length; i++) {
-			var cols = splitCSVLine(lines[i], delimiter);
-			if (cols.length === 1 && cols[0] === '') { skipped++; continue; }
-
-			var gr = new GlideRecord(tableName);
-			gr.initialize();
-
-			// short_description / description
-			if (mapIdx.short_description > -1)
-				setIfValid(gr, 'short_description', cols[mapIdx.short_description]);
-
-			if (mapIdx.description > -1)
-				setIfValid(gr, 'description', cols[mapIdx.description]);
-
-			// prioridade
-			if (mapIdx.priority > -1 && gr.isValidField('priority')) {
-				var p = mapPriority(cols[mapIdx.priority]);
-				if (p != null) gr.setValue('priority', p);
-			}
-
-			// state
-			if (mapIdx.state > -1 && gr.isValidField('state')) {
-				var s = mapState(cols[mapIdx.state]);
-				if (s != null) gr.setValue('state', s);
-			}
-
-			// assignment_group
-			if (mapIdx.assignment_group > -1 && gr.isValidField('assignment_group')) {
-				var gTok = cols[mapIdx.assignment_group];
-				if (gTok) {
-					var gSys = findGroupSysId(gTok);
-					if (gSys) gr.setValue('assignment_group', gSys); else groupMiss++;
-				}
-			}
-
-			// assigned_to
-			if (mapIdx.assigned_to > -1 && gr.isValidField('assigned_to')) {
-				var uTok = cols[mapIdx.assigned_to];
-				if (uTok) {
-					var uSys = findUserSysId(uTok);
-					if (uSys) gr.setValue('assigned_to', uSys); else userMiss++;
-				}
-			}
-
-			// Não criar registro sem conteúdo mínimo
-			var hasCore =
-				(gr.isValidField('short_description') && gr.getValue('short_description')) ||
-				(gr.isValidField('description') && gr.getValue('description'));
-
-			if (!hasCore) { skipped++; continue; }
-
-			var sid = gr.insert();
-			if (sid) created++; else skipped++;
-		}
-	}
-
-	if (processedFiles === 0) {
-		gs.addErrorMessage('Não foi possível processar o(s) arquivo(s). Verifique o CSV.');
-		return;
-	}
-
-	var msg = 'Importe concluído: ' + created + ' bug(s) criado(s), ' + skipped + ' linha(s) ignorada(s).';
-	if (userMiss > 0)  msg += ' (Assigned to não encontrado em ' + userMiss + ' linha(s))';
-	if (groupMiss > 0) msg += ' (Assignment group não encontrado em ' + groupMiss + ' linha(s))';
-	gs.addInfoMessage(msg);
-})();
+    gs.addInfoMessage("Importação concluída: " + inserted + " inseridos, " + skipped + " ignorados. " +
+      "Colunas detectadas: " + headerMsg + " | Delimitador: '" + delimiter + "'.");
+  } catch (e) {
+    gs.addErrorMessage("Erro no Producer (robusto): " + e.message);
+  }
+})(current, producer);
 ]]></script>
         <short_description/>
         <show_variable_help_on_load>false</show_variable_help_on_load>
@@ -332,22 +243,22 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-21 19:20:36</sys_created_on>
         <sys_id>6b9c03f4c3676a504d7636dc050131ed</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>Reportar Bug em Lote</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sc_cat_item_producer_6b9c03f4c3676a504d7636dc050131ed</sys_update_name>
-        <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2025-08-21 19:49:28</sys_updated_on>
-        <table_name>x_snc_mock_skillup_bug</table_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-25 13:57:40</sys_updated_on>
+        <table_name>x_snc_mock_skillup_bug_lote</table_name>
         <taxonomy_topic/>
         <template/>
         <template_manager_roles/>
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
         <vendor/>
-        <version>9</version>
+        <version>16</version>
         <view/>
         <visible_bundle>true</visible_bundle>
         <visible_guide>true</visible_guide>
