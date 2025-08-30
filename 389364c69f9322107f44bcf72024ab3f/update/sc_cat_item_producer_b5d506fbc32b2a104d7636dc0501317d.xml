@@ -6,7 +6,7 @@
         <availability>on_desktop</availability>
         <billable>false</billable>
         <can_cancel>false</can_cancel>
-        <category/>
+        <category display_value="Minhas Skills">b4060afbc32b2a104d7636dc05013156</category>
         <checked_out/>
         <cost>0</cost>
         <custom_cart/>
@@ -31,7 +31,7 @@
         <mobile_picture/>
         <mobile_picture_type>use_desktop_picture</mobile_picture_type>
         <model/>
-        <name>Envio de Certificados</name>
+        <name>Adicionar Skill do colaborador</name>
         <no_attachment_v2>false</no_attachment_v2>
         <no_cart>false</no_cart>
         <no_cart_v2>false</no_cart_v2>
@@ -55,7 +55,7 @@
 * To access the variables, use `producer.var1` where var1 is the name of the variable
 * To access the Record Producer use `cat_item`
 */]]></post_insert_script>
-        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=98bb4634c3236a504d7636dc0501315c&amp;sysparm_preview=true", "summary");</preview>
+        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=b5d506fbc32b2a104d7636dc0501317d&amp;sysparm_preview=true", "summary");</preview>
         <price>0</price>
         <published_ref/>
         <recurring_frequency/>
@@ -70,57 +70,80 @@
 * To access the variables, use `producer.var1` where var1 is the name of the variable
 * To access the Record Producer use `cat_item`
 */]]></save_script>
-        <sc_catalogs/>
+        <sc_catalogs>60f586fbc32b2a104d7636dc050131c5</sc_catalogs>
         <sc_ic_item_staging/>
         <sc_ic_version/>
         <sc_template/>
-        <script/>
+        <script><![CDATA[(function producerScript(producer) {
+  // Encontra o registro "Colaborador" do usuário atual
+  var col = new GlideRecord('x_snc_mock_skillup_colaborador');
+  col.addQuery('usuario', gs.getUserID());
+  col.setLimit(1);
+  col.query();
+  if (!col.next()) {
+    gs.addErrorMessage('Não foi possível localizar seu registro de Colaborador. Contate o suporte.');
+    current.setAbortAction(true);
+    return;
+  }
+
+  // Preenche o campo colaborador no registro criado
+  current.colaborador = col.getUniqueValue();
+
+  // Se existir o campo "ativo", define como true
+  if (current.isValidField('ativo')) {
+    current.ativo = true;
+  }
+
+  producer.redirect = true;
+  producer.redirect_url = '/sp?id=msk-skills';
+})(producer);
+]]></script>
         <short_description/>
         <show_variable_help_on_load>false</show_variable_help_on_load>
         <start_closed>false</start_closed>
         <state/>
         <sys_class_name>sc_cat_item_producer</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-08-21 14:46:23</sys_created_on>
-        <sys_id>98bb4634c3236a504d7636dc0501315c</sys_id>
-        <sys_mod_count>9</sys_mod_count>
-        <sys_name>Envio de Certificados</sys_name>
+        <sys_created_on>2025-08-30 21:52:38</sys_created_on>
+        <sys_id>b5d506fbc32b2a104d7636dc0501317d</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>Adicionar Skill do colaborador</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
-        <sys_update_name>sc_cat_item_producer_98bb4634c3236a504d7636dc0501315c</sys_update_name>
+        <sys_update_name>sc_cat_item_producer_b5d506fbc32b2a104d7636dc0501317d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-30 22:51:00</sys_updated_on>
-        <table_name>x_snc_mock_skillup_certificados</table_name>
+        <sys_updated_on>2025-08-30 22:25:57</sys_updated_on>
+        <table_name>x_snc_mock_skillup_skill_do_colaborador</table_name>
         <taxonomy_topic/>
         <template/>
         <template_manager_roles/>
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
         <vendor/>
-        <version>9</version>
+        <version>16</version>
         <view/>
         <visible_bundle>true</visible_bundle>
         <visible_guide>true</visible_guide>
         <visible_standalone>true</visible_standalone>
         <workflow/>
     </sc_cat_item_producer>
-    <sys_translated_text action="delete_multiple" query="documentkey=98bb4634c3236a504d7636dc0501315c"/>
-    <fx_price action="delete_multiple" query="id=98bb4634c3236a504d7636dc0501315c"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=b5d506fbc32b2a104d7636dc0501317d"/>
+    <fx_price action="delete_multiple" query="id=b5d506fbc32b2a104d7636dc0501317d"/>
     <fx_price action="INSERT_OR_UPDATE">
         <amount>0</amount>
         <currency display_value="BRL">BRL</currency>
         <field>price</field>
-        <id>98bb4634c3236a504d7636dc0501315c</id>
+        <id>b5d506fbc32b2a104d7636dc0501317d</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-08-21 14:46:24</sys_created_on>
-        <sys_id>3b2ec634c3236a504d7636dc050131a2</sys_id>
+        <sys_created_on>2025-08-30 21:52:38</sys_created_on>
+        <sys_id>53064afbc32b2a104d7636dc05013154</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-21 14:46:24</sys_updated_on>
+        <sys_updated_on>2025-08-30 21:52:38</sys_updated_on>
         <table>sc_cat_item_producer</table>
         <type>calculated</type>
     </fx_price>

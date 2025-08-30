@@ -2,6 +2,7 @@
     <element audit="true" db_object_id="f469a0ce9f9322107f44bcf72024ab31" label="Colaborador" max_length="40" name="x_snc_mock_skillup_colaborador" type="collection">
         <element label="User ID" max_length="100" name="user_id" type="string"/>
         <element label="Localização" max_length="32" name="localizacao" reference="cmn_location" type="reference"/>
+        <element label="usuario" max_length="32" name="usuario" reference="sys_user" type="reference"/>
         <element label="Departamento" mandatory="true" max_length="100" name="departamento" reference="cmn_department" type="reference"/>
         <element label="Supervisor" mandatory="true" max_length="32" name="supervisor" reference="x_snc_mock_skillup_supervisor" type="reference"/>
         <element label="Email" mandatory="true" max_length="100" name="email" type="string"/>
@@ -13,6 +14,9 @@
         </index>
         <index name="index2">
             <element name="supervisor"/>
+        </index>
+        <index name="index3">
+            <element name="usuario"/>
         </index>
     </element>
 </database>

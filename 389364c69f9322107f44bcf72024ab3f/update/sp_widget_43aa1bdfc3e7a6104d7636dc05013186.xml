@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>msk-skill-list</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>msk-skill-list</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function () {
+  var TBL = 'x_snc_mock_skillup_skill_do_colaborador';
+
+  data.items = [];
+
+  var gr = new GlideRecord(TBL);
+  // lista somente do usuário atual (o dot-walk exige que Colaborador tenha o campo "usuario" -> sys_user)
+  gr.addQuery('colaborador.usuario', gs.getUserID());
+
+  // se existir o campo "ativo", filtra por true (ignora se não existir)
+  if (gr.isValidField('ativo')) gr.addQuery('ativo', true);
+
+  gr.orderBy('skill.nome'); // ordena pelo nome da skill (display)
+  gr.query();
+
+  while (gr.next()) {
+    data.items.push({
+      skill: gr.skill.getDisplayValue(),
+      nivel: gr.nivel.getDisplayValue() || '' + gr.nivel,
+      atualizado: gr.sys_updated_on.getDisplayValue()
+    });
+  }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-29 15:34:55</sys_created_on>
+        <sys_id>43aa1bdfc3e7a6104d7636dc05013186</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>msk-skill-list</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sp_widget_43aa1bdfc3e7a6104d7636dc05013186</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-30 22:13:27</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title m-0">Minhas Skills</h4>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Skill</th>
+          <th>Nível</th>
+          <th>Atualizado em</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-if="!data.items.length">
+          <td colspan="3" class="text-muted">Nenhum registro encontrado.</td>
+        </tr>
+        <tr ng-repeat="row in data.items">
+          <td>{{::row.skill}}</td>
+          <td>{{::row.nivel}}</td>
+          <td>{{::row.atualizado}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right m-b">
+  <a class="btn btn-primary" href="/sp?id=sc_cat_item&sys_id=b5d506fbc32b2a104d7636dc0501317d">
+    + Adicionar Skill
+  </a>
+</div>]]></template>
+    </sp_widget>
+</record_update>
