@@ -32,7 +32,7 @@
         <formula/>
         <function_definition/>
         <function_field>false</function_field>
-        <internal_type display_value="">glide_duration</internal_type>
+        <internal_type display_value="">float</internal_type>
         <mandatory>false</mandatory>
         <max_length>40</max_length>
         <name>x_snc_mock_skillup_certificados</name>
@@ -58,7 +58,7 @@
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_mock_skillup_certificados_u_quantidade_horas</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-21 13:55:21</sys_updated_on>
+        <sys_updated_on>2025-08-30 23:06:18</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="aa1282f8c3af2a504d7636dc050131a1" label="Certificados" max_length="40" name="x_snc_mock_skillup_certificados" type="collection">
         <element display="true" label="Curso" max_length="32" name="u_curso" reference="x_snc_mock_skillup_curso" type="reference"/>
-        <element label="Quantidade de horas" max_length="40" name="u_quantidade_horas" type="glide_duration"/>
+        <element label="Quantidade de horas" max_length="40" name="u_quantidade_horas" type="float"/>
         <element label="Estagiário" max_length="32" name="u_estagiario" reference="x_snc_mock_skillup_equipe" type="reference"/>
         <element label="Data de Emissão" max_length="40" name="u_data_emissao" type="glide_date"/>
         <index name="index">

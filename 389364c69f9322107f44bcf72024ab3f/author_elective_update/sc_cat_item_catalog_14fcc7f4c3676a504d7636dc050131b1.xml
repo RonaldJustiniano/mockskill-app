@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog">
+    <sc_cat_item_catalog action="DELETE">
+        <sc_cat_item display_value="Reportar Bug em Lote">6b9c03f4c3676a504d7636dc050131ed</sc_cat_item>
+        <sc_catalog display_value="Service Catalog">e0d08b13c3330100c8b837659bba8fb4</sc_catalog>
+        <sys_class_name>sc_cat_item_catalog</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-21 19:20:36</sys_created_on>
+        <sys_id>14fcc7f4c3676a504d7636dc050131b1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Service Catalog.Reportar Bug em Lote</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sc_cat_item_catalog_14fcc7f4c3676a504d7636dc050131b1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-21 19:20:36</sys_updated_on>
+    </sc_cat_item_catalog>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</application>
+        <file_path/>
+        <instance_id>92e52a173b67ca14a36804e0b5e45a01</instance_id>
+        <instance_name>dev280770</instance_name>
+        <name>sc_cat_item_catalog_14fcc7f4c3676a504d7636dc050131b1</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog"><sc_cat_item_catalog action="INSERT_OR_UPDATE"><sc_cat_item display_value="Reportar Bug em Lote">6b9c03f4c3676a504d7636dc050131ed</sc_cat_item><sc_catalog display_value="Service Catalog">e0d08b13c3330100c8b837659bba8fb4</sc_catalog><sys_class_name>sc_cat_item_catalog</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-08-21 19:20:36</sys_created_on><sys_id>14fcc7f4c3676a504d7636dc050131b1</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Service Catalog.Reportar Bug em Lote</sys_name><sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package><sys_policy/><sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope><sys_update_name>sc_cat_item_catalog_14fcc7f4c3676a504d7636dc050131b1</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-08-21 19:20:36</sys_updated_on></sc_cat_item_catalog></record_update>]]></payload>
+        <payload_hash>-1790542722</payload_hash>
+        <record_name>Service Catalog.Reportar Bug em Lote</record_name>
+        <reverted_from/>
+        <source>20baaeb7c3d326504d7636dc050131b4</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-21 19:20:36</sys_created_on>
+        <sys_id>d0fcc7f4c3676a504d7636dc050131b5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>198ce136cf70000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-21 19:20:36</sys_updated_on>
+        <type>Catalog Items Catalog</type>
+        <update_guid>d4fcc7f4c5676a50b4bb12bb00c6cab4</update_guid>
+        <update_guid_history>d4fcc7f4c5676a50b4bb12bb00c6cab4:-1790542722</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Service Catalog.Reportar Bug em Lote">9adb1abbc3ab2a104d7636dc050131c0</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-30 23:27:52</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_catalog">sc_cat_item_catalog</sys_db_object>
+        <sys_id>35a586376e2940bb9b0a7a510b391b59</sys_id>
+        <sys_metadata>14fcc7f4c3676a504d7636dc050131b1</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Service Catalog.Reportar Bug em Lote</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_parent display_value="Reportar Bug em Lote">6b9c03f4c3676a504d7636dc050131ed</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_scope_delete display_value="">1ef33293978743289a870dba302e2240</sys_scope_delete>
+        <sys_update_name>sc_cat_item_catalog_14fcc7f4c3676a504d7636dc050131b1</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_catalog_14fcc7f4c3676a504d7636dc050131b1">d0fcc7f4c3676a504d7636dc050131b5</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-30 23:27:52</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
