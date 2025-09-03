@@ -2,29 +2,33 @@
     <sys_security_acl action="INSERT_OR_UPDATE">
         <active>true</active>
         <admin_overrides>true</admin_overrides>
-        <advanced>false</advanced>
+        <advanced>true</advanced>
         <applies_to/>
         <condition/>
         <controlled_by_refs/>
         <decision_type>allow</decision_type>
-        <description/>
+        <description>Allow create for records in x_snc_mock_skillup_skill_do_colaborador, for users with roles (x_snc_mock_skillup.admin, x_snc_mock_skillup.gestor, x_snc_mock_skillup.colaborador), and if the ACL script returns true.</description>
         <local_or_existing>Local</local_or_existing>
         <name>x_snc_mock_skillup_skill_do_colaborador</name>
         <operation display_value="create">create</operation>
-        <script/>
+        <script><![CDATA[answer = (gs.hasRole('admin') ||
+          gs.hasRole('x_snc_mock_skillup.admin') ||
+          gs.hasRole('x_snc_mock_skillup.gestor') ||
+          gs.hasRole('x_snc_mock_skillup.colaborador'));
+]]></script>
         <security_attribute/>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-08-29 14:32:24</sys_created_on>
-        <sys_id>b1a6979bc3e7a6104d7636dc050131e5</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_created_on>2025-08-31 21:57:48</sys_created_on>
+        <sys_id>3d905b88c3b3aa104d7636dc05013141</sys_id>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>x_snc_mock_skillup_skill_do_colaborador</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
-        <sys_update_name>sys_security_acl_b1a6979bc3e7a6104d7636dc050131e5</sys_update_name>
+        <sys_update_name>sys_security_acl_3d905b88c3b3aa104d7636dc05013141</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-29 14:32:24</sys_updated_on>
+        <sys_updated_on>2025-09-01 15:16:37</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>
