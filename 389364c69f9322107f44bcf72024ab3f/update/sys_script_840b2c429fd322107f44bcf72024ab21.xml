@@ -28,12 +28,17 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	if (!gs.nil(current.email)) {
+        current.user_id = current.email;
+	}
     if (!current.usuario && current.email) {
         var userGR = new GlideRecord('sys_user');
         userGR.addQuery('email', current.email);
         userGR.query();
         if (userGR.next()) {
             current.usuario = userGR.sys_id;
+			current.user_id = userGR.sys_id;
         }
     }
 
@@ -45,7 +50,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>840b2c429fd322107f44bcf72024ab21</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Adiciona email como user id</sys_name>
         <sys_overrides/>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
@@ -53,7 +58,7 @@
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sys_script_840b2c429fd322107f44bcf72024ab21</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-09-01 11:51:51</sys_updated_on>
+        <sys_updated_on>2025-09-03 01:26:20</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>
