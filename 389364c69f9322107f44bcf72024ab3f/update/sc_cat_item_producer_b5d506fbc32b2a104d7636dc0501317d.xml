@@ -74,46 +74,7 @@
         <sc_ic_item_staging/>
         <sc_ic_version/>
         <sc_template/>
-        <script><![CDATA[(function producerScript(producer) {
-  var isAdminOrGestor = gs.hasRole('admin') ||
-                        gs.hasRole('x_snc_mock_skillup.admin') ||
-                        gs.hasRole('x_snc_mock_skillup.gestor');
-
-  // Atalho: define "ativo" se existir
-  function setAtivoIfExists() {
-    if (current.isValidField('ativo')) current.ativo = true;
-  }
-
-  // Para admin/gestor: não exige vínculo de colaborador
-  if (isAdminOrGestor) {
-    setAtivoIfExists();
-    return;
-  }
-
-  // Para colaborador: busca o registro de Colaborador pelo e-mail do usuário logado
-  var myEmail = gs.getUser().getEmail();
-  if (!myEmail) {
-    gs.addErrorMessage('Seu usuário não possui e-mail cadastrado. Contate o suporte.');
-    current.setAbortAction(true);
-    return;
-  }
-
-  var col = new GlideRecord('x_snc_mock_skillup_colaborador');
-  col.addQuery('email', myEmail);
-  col.setLimit(1);
-  col.query();
-  if (!col.next()) {
-    gs.addErrorMessage('Não foi possível localizar seu registro de Colaborador (por e-mail). Contate o suporte.');
-    current.setAbortAction(true);
-    return;
-  }
-
-  // Preenche a referência do colaborador no registro de destino
-  current.colaborador = col.getUniqueValue();
-
-  setAtivoIfExists();
-})(producer);
-]]></script>
+        <script/>
         <short_description/>
         <show_variable_help_on_load>false</show_variable_help_on_load>
         <start_closed>false</start_closed>
@@ -122,14 +83,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-30 21:52:38</sys_created_on>
         <sys_id>b5d506fbc32b2a104d7636dc0501317d</sys_id>
-        <sys_mod_count>31</sys_mod_count>
+        <sys_mod_count>61</sys_mod_count>
         <sys_name>Adicionar Skill do colaborador</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sc_cat_item_producer_b5d506fbc32b2a104d7636dc0501317d</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-09-03 02:31:51</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 13:22:35</sys_updated_on>
         <table_name>x_snc_mock_skillup_skill_do_colaborador</table_name>
         <taxonomy_topic/>
         <template/>
@@ -137,7 +98,7 @@
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
         <vendor/>
-        <version>31</version>
+        <version>61</version>
         <view/>
         <visible_bundle>true</visible_bundle>
         <visible_guide>true</visible_guide>

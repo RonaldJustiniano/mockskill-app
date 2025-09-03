@@ -26,7 +26,13 @@
   return '';
 }
 
-function isNew_() { return gs.nil(current.sys_id); }
+function isNew_() {
+  try {
+    return !current || current.isNewRecord() || gs.nil(current.getUniqueValue());
+  } catch (e) {
+    return true;
+  }
+}
 
 answer = (gs.hasRole('admin') ||
           gs.hasRole('x_snc_mock_skillup.admin') ||
@@ -36,24 +42,23 @@ if (!answer && gs.hasRole('x_snc_mock_skillup.colaborador')) {
   if (isNew_()) {
     answer = true;
   } else {
-    var myColl = getMyCollaboratorSysId_();
+    var myColl = getMyCollaboratorSysId_(); // sua função utilitária
     answer = (myColl && current.getValue('colaborador') == myColl);
   }
-}
-]]></script>
+}]]></script>
         <security_attribute/>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-29 14:38:06</sys_created_on>
         <sys_id>1fe7131fc3e7a6104d7636dc050131bd</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>18</sys_mod_count>
         <sys_name>x_snc_mock_skillup_skill_do_colaborador</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sys_security_acl_1fe7131fc3e7a6104d7636dc050131bd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-09-01 15:19:32</sys_updated_on>
+        <sys_updated_on>2025-09-03 00:59:31</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>

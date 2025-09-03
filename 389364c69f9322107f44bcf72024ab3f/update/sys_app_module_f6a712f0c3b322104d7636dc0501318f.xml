@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value=" Mock SkillUp">5ae3640a9f9322107f44bcf72024ab53</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint>Abrir Portal MockSkill</hint>
+        <homepage/>
+        <image/>
+        <link_type>DIRECT</link_type>
+        <map_page/>
+        <mobile_title>Portal MockSkill</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name/>
+        <order/>
+        <override_menu_roles>false</override_menu_roles>
+        <query>/sp?id=mock_home&amp;sysparm_portal=msk</query>
+        <report/>
+        <require_confirmation>true</require_confirmation>
+        <roles>x_snc_mock_skillup.admin,x_snc_mock_skillup.colaborador,x_snc_mock_skillup.gestor,admin</roles>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-03 01:46:55</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f6a712f0c3b322104d7636dc0501318f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Portal MockSkill</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sys_app_module_f6a712f0c3b322104d7636dc0501318f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-03 01:52:44</sys_updated_on>
+        <timeline_page/>
+        <title>Portal MockSkill</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name>_blank</window_name>
+    </sys_app_module>
+</record_update>
