@@ -23,7 +23,7 @@
         <dynamic_value_field/>
         <enable_also_request_for>false</enable_also_request_for>
         <example_text/>
-        <field/>
+        <field>colaborador</field>
         <global>false</global>
         <help_tag>More information</help_tag>
         <help_text/>
@@ -36,23 +36,23 @@
         <lookup_label/>
         <lookup_price/>
         <lookup_source/>
-        <lookup_table/>
+        <lookup_table>x_snc_mock_skillup_colaborador</lookup_table>
         <lookup_unique>false</lookup_unique>
-        <lookup_value/>
+        <lookup_value>nome</lookup_value>
         <macro/>
         <macroponent/>
-        <mandatory>false</mandatory>
-        <map_to_field>false</map_to_field>
+        <mandatory>true</mandatory>
+        <map_to_field>true</map_to_field>
         <mask_use_confirmation>false</mask_use_confirmation>
         <mask_use_encryption>false</mask_use_encryption>
-        <name>observacao</name>
+        <name>colaborador</name>
         <not_available_conversation>false</not_available_conversation>
-        <order/>
+        <order>0</order>
         <post_insert_script/>
         <price_if_checked>0</price_if_checked>
         <pricing_implications>false</pricing_implications>
         <published_ref/>
-        <question_text>observação</question_text>
+        <question_text>Colaborador</question_text>
         <read_only>false</read_only>
         <read_roles/>
         <read_script/>
@@ -80,24 +80,24 @@
         <summary_macro/>
         <sys_class_name>item_option_new</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-08-30 21:57:56</sys_created_on>
-        <sys_id>c217427fc32b2a104d7636dc050131ac</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>observação</sys_name>
+        <sys_created_on>2025-09-03 02:05:47</sys_created_on>
+        <sys_id>459c12b8c3b322104d7636dc0501315e</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Colaborador</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
-        <sys_update_name>item_option_new_c217427fc32b2a104d7636dc050131ac</sys_update_name>
+        <sys_update_name>item_option_new_459c12b8c3b322104d7636dc0501315e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-30 21:57:56</sys_updated_on>
+        <sys_updated_on>2025-09-03 02:19:03</sys_updated_on>
         <table/>
         <tooltip/>
         <topic_block/>
-        <type>6</type>
+        <type>18</type>
         <ui_page/>
         <unique>false</unique>
         <use_dynamic_default>false</use_dynamic_default>
-        <use_reference_qualifier>simple</use_reference_qualifier>
+        <use_reference_qualifier>advanced</use_reference_qualifier>
         <validate_regex/>
         <variable_name/>
         <variable_set/>
@@ -109,22 +109,22 @@
         <visible_summary>true</visible_summary>
         <write_roles/>
     </item_option_new>
-    <sys_translated_text action="delete_multiple" query="documentkey=c217427fc32b2a104d7636dc050131ac"/>
-    <fx_price action="delete_multiple" query="id=c217427fc32b2a104d7636dc050131ac"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=459c12b8c3b322104d7636dc0501315e"/>
+    <fx_price action="delete_multiple" query="id=459c12b8c3b322104d7636dc0501315e"/>
     <fx_price action="INSERT_OR_UPDATE">
         <amount>0</amount>
         <currency display_value="BRL">BRL</currency>
         <field>price_if_checked</field>
-        <id>c217427fc32b2a104d7636dc050131ac</id>
+        <id>459c12b8c3b322104d7636dc0501315e</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-08-30 21:57:56</sys_created_on>
-        <sys_id>c947c27fc32b2a104d7636dc0501318a</sys_id>
+        <sys_created_on>2025-09-03 02:05:48</sys_created_on>
+        <sys_id>cdcc16b8c3b322104d7636dc05013134</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-30 21:57:56</sys_updated_on>
+        <sys_updated_on>2025-09-03 02:05:48</sys_updated_on>
         <table>item_option_new</table>
         <type>calculated</type>
     </fx_price>
@@ -132,16 +132,16 @@
         <amount>0</amount>
         <currency display_value="BRL">BRL</currency>
         <field>rec_price_if_checked</field>
-        <id>c217427fc32b2a104d7636dc050131ac</id>
+        <id>459c12b8c3b322104d7636dc0501315e</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-08-30 21:57:56</sys_created_on>
-        <sys_id>4147c27fc32b2a104d7636dc0501318a</sys_id>
+        <sys_created_on>2025-09-03 02:05:48</sys_created_on>
+        <sys_id>c1cc16b8c3b322104d7636dc05013133</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-30 21:57:56</sys_updated_on>
+        <sys_updated_on>2025-09-03 02:05:48</sys_updated_on>
         <table>item_option_new</table>
         <type>calculated</type>
     </fx_price>
