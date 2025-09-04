@@ -1,12 +1,327 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function() {
-  /* widget controller */
+        <client_script><![CDATA[api.controller = function($scope, spUtil) {
   var c = this;
-};]]></client_script>
+
+  /* ---------- Helpers de data ---------- */
+  // aceita dd/mm/aaaa e yyyy-mm-dd -> Date
+  function toDate(s) {
+    if (!s) return null;
+    s = ('' + s).trim();
+    var m1 = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s);
+    if (m1) return new Date(+m1[3], (+m1[2]-1), +m1[1]);
+    var m2 = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+    if (m2) return new Date(+m2[1], (+m2[2]-1), +m2[3]);
+    return null;
+  }
+  // Date | string(dd/mm/aaaa|yyyy-mm-dd) -> yyyy-mm-dd
+  function toIso(dOrStr) {
+    if (!dOrStr) return '';
+    if (dOrStr instanceof Date) {
+      var y = dOrStr.getFullYear();
+      var m = ('0' + (dOrStr.getMonth()+1)).slice(-2);
+      var day = ('0' + dOrStr.getDate()).slice(-2);
+      return y + '-' + m + '-' + day;
+    }
+    var s = ('' + dOrStr).trim();
+    var m1 = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s);
+    if (m1) return m1[3] + '-' + m1[2] + '-' + m1[1];
+    var m2 = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+    if (m2) return m2[1] + '-' + m2[2] + '-' + m2[3];
+    return '';
+  }
+  // Date -> yyyy-mm-dd (ou '' se null)
+  function isoFromDateObj(d) { return (d instanceof Date) ? toIso(d) : ''; }
+
+  /* ---------- Estado inicial seguro ---------- */
+  c.data = c.data || {};
+  c.data.rows = c.data.rows || [];
+  c.data.niveis = c.data.niveis || [];
+
+  // Helper seguro para exibir label do nível (se usar no template)
+  c.getNivelLabel = function(value) {
+    var arr = c.data.niveis || [];
+    for (var i=0;i<arr.length;i++) if (arr[i].value === value) return arr[i].label;
+    return value || '';
+  };
+
+  /* ---------- Apply de resposta do server ---------- */
+  function apply(resp) {
+    if (!resp || !resp.data) return;
+    c.data = resp.data || {};
+    c.data.rows   = c.data.rows   || [];
+    c.data.niveis = c.data.niveis || [];
+    (c.data.rows || []).forEach(function(r){
+      r.data_inicio_obj = toDate(r.data_inicio);
+      r.data_fim_obj    = toDate(r.data_fim);
+    });
+    c.lastError = c.data.error || '';
+    c.lastSuccess = c.data.created_sys_id ? ("Criado: " + c.data.created_sys_id) :
+                     (c.data.updated_sys_id ? ("Atualizado: " + c.data.updated_sys_id) : '');
+  }
+
+  /* ---------- Novo registro (barra superior) ---------- */
+  c.new = { colaborador: '', skill: '', nivel: '', data_inicio_obj: null, data_fim_obj: null };
+
+  c.add = function () {
+    if (!c.new || !c.new.skill) { c.lastError = 'Selecione uma skill.'; return; }
+    if (!c.server || typeof c.server.update !== 'function') {
+      c.lastError = 'Ação indisponível. Recarregue a página.'; return;
+    }
+
+    var payload = {
+      skill: c.new.skill,
+      nivel: c.new.nivel || ''
+    };
+    var diIso = isoFromDateObj(c.new.data_inicio_obj);
+    var dfIso = isoFromDateObj(c.new.data_fim_obj);
+    if (diIso) payload.data_inicio = diIso;         // nunca envia ''
+    if (dfIso) payload.data_fim    = dfIso;         // nunca envia ''
+    if (c.data && c.data.canChooseColab && c.new.colaborador) {
+      payload.colaborador = c.new.colaborador;
+    }
+
+    // Envia via c.data para o server script (op + payload)
+    c.data = c.data || {};
+    c.data.__op = 'create';
+    c.data.__payload = payload;
+
+    var req = angular.copy(c.data);
+    console.log("[mockSkill][CLIENT] calling create (via c.data)", req);
+
+    c.server.update(req)
+      .then(function (res) {
+        console.log("[mockSkill][CLIENT] response", res);
+        apply(res);
+      }, function (err) {
+        console.error("[mockSkill][CLIENT] server error:", err);
+        c.lastError = (err && err.data && err.data.error && err.data.error.message) || 'Erro ao criar';
+      })
+      .finally(function () {
+        if (!c.lastError) c.new = { colaborador: '', skill: '', nivel: '', data_inicio_obj: null, data_fim_obj: null };
+        if (c.data) { delete c.data.__op; delete c.data.__payload; }
+      });
+  };
+
+c.save = function(row) {
+  c.data = c.data || {};
+
+  // Converte Date -> 'yyyy-mm-dd'
+  function isoFromDateObj(d) {
+    if (!(d instanceof Date)) return '';
+    var y = d.getFullYear();
+    var m = ('0' + (d.getMonth()+1)).slice(-2);
+    var day = ('0' + d.getDate()).slice(-2);
+    return y + '-' + m + '-' + day;
+  }
+
+  // Se o usuário mexeu só no texto e não tocou no datepicker,
+  // garanta que data_inicio_obj/data_fim_obj existam a partir das strings antigas
+  function ensureDateObjFromStringIfMissing(r) {
+    function toDate(s) {
+      if (!s) return null;
+      s = ('' + s).trim();
+      var m1 = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s);
+      if (m1) return new Date(+m1[3], (+m1[2]-1), +m1[1]);
+      var m2 = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+      if (m2) return new Date(+m2[1], (+m2[2]-1), +m2[3]);
+      return null;
+    }
+    if (!r.data_inicio_obj && r.data_inicio) r.data_inicio_obj = toDate(r.data_inicio);
+    if (!r.data_fim_obj && r.data_fim)       r.data_fim_obj    = toDate(r.data_fim);
+  }
+
+  ensureDateObjFromStringIfMissing(row);
+
+  var newDiIso = isoFromDateObj(row.data_inicio_obj); // '' se não tiver data
+  var newDfIso = isoFromDateObj(row.data_fim_obj);    // '' se não tiver data
+
+  var payload = { sys_id: row.sys_id, nivel: row.nivel };
+
+  // Só adiciona a propriedade quando houver data (nunca manda string vazia)
+  if (newDiIso) payload.data_inicio = newDiIso;
+  if (newDfIso) payload.data_fim = newDfIso;
+
+  // Se quiser um botão “Limpar”, adicione flags na linha:
+  // if (row._clear_inicio === true) payload.clear_data_inicio = true;
+  // if (row._clear_fim === true)    payload.clear_data_fim = true;
+
+  c.data.__op = 'update';
+  c.data.__payload = payload;
+
+  var req = angular.copy(c.data);
+  console.log("[mockSkill][CLIENT] save payload", payload); // ajuda no debug
+  c.server.update(req)
+    .then(apply, function(err){
+      c.lastError = (err && err.data && err.data.error && err.data.error.message) || 'Erro ao salvar';
+    })
+    .finally(function () {
+      if (c.data) { delete c.data.__op; delete c.data.__payload; }
+    });
+};
+
+
+
+
+  /* ---------- Remover linha ---------- */
+  c.remove = function(row) {
+    if (!confirm('Remover este registro?')) return;
+    if (!c.server || typeof c.server.update !== 'function') {
+      c.lastError = 'Ação indisponível. Recarregue a página.'; return;
+    }
+
+    c.data = c.data || {};
+    c.data.__op = 'delete';
+    c.data.__payload = { sys_id: row.sys_id };
+
+    var req = angular.copy(c.data);
+    c.server.update(req)
+      .then(apply, function(err){
+        c.lastError = (err && err.data && err.data.error && err.data.error.message) || 'Erro ao remover';
+      })
+      .finally(function () {
+        if (c.data) { delete c.data.__op; delete c.data.__payload; }
+      });
+  };
+};
+]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>/* Card base */
+.msk-card {
+  background: #0f172a; /* slate-900 */
+  color: #e5e7eb;      /* gray-200 */
+  border: 1px solid rgba(148,163,184,0.15); /* slate-400/15 */
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.35);
+}
+
+/* Header */
+.msk-card__header {
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  color: #fff;
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.msk-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.msk-title-icon { color: #fff; font-size: 18px; }
+.msk-card__subtitle {
+  margin-top: 4px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+}
+
+/* Body */
+.msk-card__body { padding: 16px; }
+
+/* Toolbar (form de inclusão) */
+.msk-toolbar {
+  background: rgba(30,41,59,0.6);
+  border: 1px solid rgba(148,163,184,0.14);
+  border-radius: 10px;
+  padding: 12px 12px 6px;
+  margin-bottom: 14px;
+}
+.msk-label {
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+.msk-toolbar__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.msk-btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  border: none;
+  transition: transform .05s ease, box-shadow .2s ease;
+}
+.msk-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(99,102,241,0.25);
+}
+
+/* Table */
+.msk-table-wrap { margin-top: 8px; }
+.msk-table {
+  margin-bottom: 0;
+  color: #e5e7eb;
+}
+.msk-table &gt; thead &gt; tr &gt; th {
+  background: rgba(15,23,42,0.7);
+  border-bottom: 1px solid rgba(148,163,184,0.18);
+  color: #cbd5e1;
+  font-weight: 600;
+}
+.msk-table &gt; tbody &gt; tr &gt; td {
+  border-top: 1px solid rgba(148,163,184,0.12);
+  vertical-align: middle;
+}
+.msk-cell-main {
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* Chip de skill */
+.msk-chip {
+  background: rgba(59,130,246,0.15);
+  border: 1px solid rgba(59,130,246,0.35);
+  color: #bfdbfe;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 12px;
+}
+
+/* Inputs */
+.msk-card .form-control {
+  background: #0b1220;
+  border: 1px solid rgba(148,163,184,0.22);
+  color: #e5e7eb;
+}
+.msk-card .form-control:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 2px rgba(96,165,250,0.25);
+}
+
+/* Botões */
+.btn-success.btn-xs, .btn-danger.btn-xs {
+  padding: 5px 8px;
+  border-radius: 6px;
+}
+.btn-success { background-color: #22c55e; border-color: #16a34a; }
+.btn-success:hover { background-color: #16a34a; }
+.btn-danger { background-color: #ef4444; border-color: #dc2626; }
+.btn-danger:hover { background-color: #dc2626; }
+
+/* Estados vazios */
+.p-30 { padding: 30px !important; }
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .msk-toolbar .row &gt; [class*="col-"] { margin-bottom: 10px; }
+  .msk-toolbar__actions { justify-content: stretch; }
+  .msk-btn-primary { width: 100%; }
+}
+</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -25,92 +340,437 @@
         <script><![CDATA[(function () {
   var TBL = 'x_snc_mock_skillup_skill_do_colaborador';
 
-  data.items = [];
-  data.canSeeAll = false;
+  function isAdmin()  { return gs.hasRole('admin') || gs.hasRole('x_snc_mock_skillup.admin'); }
+  function isGestor() { return gs.hasRole('x_snc_mock_skillup.gestor'); }
+  function canWriteAll() { return isAdmin() || isGestor(); }
+  function canReadAll()  { return isAdmin() || isGestor(); }
 
-  var isAdmin   = gs.hasRole('admin') || gs.hasRole('x_snc_mock_skillup.admin');
-  var isGestor  = gs.hasRole('x_snc_mock_skillup.gestor');
-  var isColab   = gs.hasRole('x_snc_mock_skillup.colaborador');
-
-  if (isAdmin || isGestor) {
-    data.canSeeAll = true;
+  function getMyColaboradorId() {
+    var meId = gs.getUserID() || '';
+    var meEmail = (gs.getUser().getEmail() || '').trim().toLowerCase();
+    var gr = new GlideRecord('x_snc_mock_skillup_colaborador');
+    var qc = gr.addQuery('usuario', meId);
+    if (meEmail) qc.addOrCondition('email', meEmail);
+    gr.setLimit(1);
+    gr.query();
+    return gr.next() ? ('' + gr.getUniqueValue()) : '';
   }
 
-  var gr = new GlideRecord(TBL);
+  function toBRDate(v) {
+    if (!v) return '';
+    var s = '' + v;
+    var m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!m) return '';
+    return m[3] + '/' + m[2] + '/' + m[1];
+  }
 
-  if (!data.canSeeAll) {
-    var myEmail = gs.getUser().getEmail();
-    if (!myEmail) {
-      data.error = 'Usuário sem e-mail cadastrado.';
-      return;
+  // aceita dd/mm/aaaa ou yyyy-mm-dd[ HH:mm:ss]
+  function safeIso(val) {
+    if (!val) return null;
+    var s = ('' + val).trim();
+    var m1 = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s);
+    if (m1) return m1[3] + '-' + m1[2] + '-' + m1[1];
+    var m2 = /^(\d{4})-(\d{2})-(\d{2})/.exec(s);
+    if (m2) return m2[1] + '-' + m2[2] + '-' + m2[3];
+    gs.warn("[mockSkill] data inválida: " + s);
+    return null;
+  }
+
+  function safeStringify(o) { try { return JSON.stringify(o); } catch(e) { return '' + o; } }
+
+  // ---------- LOAD ----------
+  if (!input) {
+    gs.info("[mockSkill][SERVER] LOAD ======================================================================");
+    var myColabId_Load = getMyColaboradorId() || '';
+    data.canChooseColab = canWriteAll();
+
+    data.rows = [];
+    var grL = new GlideRecord(TBL);
+    if (!canReadAll()) {
+      if (myColabId_Load) grL.addQuery('colaborador', myColabId_Load);
+      else grL.setLimit(0);
     }
-    gr.addQuery('colaborador.email', myEmail);
-  }
-  if (gr.isValidField('ativo')) {
-    gr.addQuery('ativo', true);
+    grL.orderBy('colaborador'); grL.orderBy('skill'); grL.query();
+    while (grL.next()) {
+      data.rows.push({
+        sys_id:            '' + grL.getUniqueValue(),
+        colaborador:       '' + grL.getValue('colaborador'),
+        colaborador_name:  '' + grL.getDisplayValue('colaborador'),
+        skill:             '' + grL.getValue('skill'),
+        skill_name:        '' + grL.getDisplayValue('skill'),
+        nivel:             '' + grL.getValue('nivel'),
+        data_inicio:       toBRDate(grL.getValue('data_inicio')),
+        data_fim:          toBRDate(grL.getValue('data_fim')),
+        _can_edit:         grL.canWrite(),
+        _can_delete:       grL.canDelete()
+      });
+    }
+
+    data.skills = [];
+    var s = new GlideRecord('x_snc_mock_skillup_skill');
+    if (s.isValidField('name')) s.orderBy('name');
+    s.query();
+    while (s.next()) data.skills.push({ sys_id: '' + s.getUniqueValue(), name: '' + s.getDisplayValue() });
+
+    data.niveis = [];
+    var ch = new GlideRecord('sys_choice');
+    ch.addQuery('name', TBL); ch.addQuery('element', 'nivel'); ch.orderBy('sequence'); ch.query();
+    if (ch.hasNext()) {
+      while (ch.next()) data.niveis.push({ value: '' + ch.getValue('value'), label: '' + ch.getValue('label') });
+    } else {
+      data.niveis = [
+        { value: 'basico',        label: 'Básico' },
+        { value: 'intermediario', label: 'Intermediário' },
+        { value: 'avancado',      label: 'Avançado' }
+      ];
+    }
+
+    var probe = new GlideRecord(TBL);
+    data.canChooseColab = probe.canCreate() && canWriteAll();
+    if (data.canChooseColab) {
+      data.colaboradores = [];
+      var pc = new GlideRecord('x_snc_mock_skillup_colaborador');
+      if (pc.isValidField('nome')) pc.orderBy('nome'); else if (pc.isValidField('name')) pc.orderBy('name');
+      pc.query();
+      while (pc.next()) data.colaboradores.push({ sys_id: '' + pc.getUniqueValue(), name: '' + pc.getDisplayValue() });
+    }
+
+    gs.info("[mockSkill][SERVER] LOAD ok: rows=" + data.rows.length + " skills=" + data.skills.length + " canChooseColab=" + data.canChooseColab);
+    return;
   }
 
-  gr.orderBy('colaborador.nome');
-  gr.orderBy('skill.nome');
-  gr.setLimit(500);
-  gr.query();
+  gs.info("[mockSkill][SERVER] POSTBACK ======================================================================");
 
+
+// ---------- POST ----------
+
+var raw = {};
+var hasInput = (typeof input !== 'undefined' && input != null);
+
+// Prioridade: input.data (se existir) → input (direto) → {}
+if (hasInput) {
+  if (typeof input === 'object' && input.data && typeof input.data === 'object') {
+    raw = input.data;
+  } else if (typeof input === 'object') {
+    raw = input;
+  } else {
+    raw = {};
+  }
+}
+
+var op = '';
+try {
+  op = (raw.op || raw.action || raw.fn || raw.__op || '').toString();
+} catch (e) { op = ''; }
+
+var p = {};
+if (raw.payload && typeof raw.payload === 'object')        p = raw.payload;
+else if (raw.__payload && typeof raw.__payload === 'object') p = raw.__payload;
+else if (raw.data && raw.data.payload && typeof raw.data.payload === 'object') p = raw.data.payload;
+else if (raw.data && raw.data.__payload && typeof raw.data.__payload === 'object') p = raw.data.__payload;
+
+gs.info("[mockSkill][SERVER] raw=" + safeStringify(raw));
+gs.info("[mockSkill][SERVER] POST op=" + op + " payload=" + safeStringify(p));
+
+var myColabId = getMyColaboradorId() || '';
+
+try {
+  if (op === 'create') {
+    var canCreateProbe = new GlideRecord(TBL);
+    if (!canCreateProbe.canCreate()) gs.throwException('Sem permissão para criar (ACL).');
+
+    var colabToUse = (p.colaborador && canWriteAll()) ? p.colaborador : myColabId;
+    if (!colabToUse) gs.throwException('Sem colaborador vinculado. Selecione um colaborador ou crie seu cadastro.');
+
+    var grc = new GlideRecord(TBL);
+    grc.initialize();
+    grc.setValue('colaborador', colabToUse);
+    if (p.skill) grc.setValue('skill', p.skill);
+    if (typeof p.nivel !== 'undefined') grc.setValue('nivel', p.nivel);
+
+    var di = safeIso(p.data_inicio), df = safeIso(p.data_fim);
+    if (di) grc.setValue('data_inicio', di);
+    if (df) grc.setValue('data_fim', df);
+
+    var sysId = grc.insert();
+    data.created_sys_id = sysId || '';
+
+  } else if (op === 'update') {
+gs.info("[mockSkill][SERVER] update ======================================================================");
+
+var gru = new GlideRecord(TBL);
+
+if (p.sys_id && gru.get(p.sys_id)) {
+  if (!gru.canWrite()) gs.throwException('Sem permissão para editar (ACL).');
+
+  // --- diagnostico antes
+  var before_nivel = '' + gru.getValue('nivel');
+  var before_di    = '' + gru.getValue('data_inicio'); // "YYYY-MM-DD HH:mm:ss" ou ''
+  var before_df    = '' + gru.getValue('data_fim');
+
+  gs.info("[mockSkill][SERVER] BEFORE nivel=" + before_nivel +
+          " di=" + before_di + " df=" + before_df);
+
+  var changed = false;
+
+  // NÍVEL
+  if (typeof p.nivel !== 'undefined') {
+    var nv = '' + p.nivel;
+    if (nv !== before_nivel) {
+      gru.setValue('nivel', nv);
+      changed = true;
+      gs.info("[mockSkill][SERVER] nivel -> " + nv);
+    }
+  }
+
+ // dentro do op === 'update'
+if (p.clear_data_inicio === true) {
+  gru.setValue('data_inicio','');
+  changed = true;
+} else if (p.data_inicio) {
+  var diU = safeIso(p.data_inicio);
+  if (diU) { gru.setValue('data_inicio', diU); changed = true; }
+}
+// idem para data_fim
+if (p.clear_data_fim === true) {
+  gru.setValue('data_fim','');
+  changed = true;
+} else if (p.data_fim) {
+  var dfU = safeIso(p.data_fim);
+  if (dfU) { gru.setValue('data_fim', dfU); changed = true; }
+}
+
+
+  if (!changed) {
+    gs.info("[mockSkill][SERVER] update: nada para alterar.");
+    data.updated_sys_id = p.sys_id;
+  } else {
+    // Se BR estiver bloqueando e você quiser testar sem regras, descomente:
+    // gru.setWorkflow(false);
+
+    var res = gru.update(); // retorna sys_id se OK, '' se abortado
+    gs.info("[mockSkill][SERVER] update RESULT=" + res);
+
+    if (!res) {
+      gs.warn("[mockSkill][SERVER] update ABORTADO (verifique BR 'before update').");
+      data.error = "Atualização bloqueada por regra de negócio (before update).";
+    } else {
+      var chk = new GlideRecord(TBL);
+      chk.get(p.sys_id);
+      gs.info("[mockSkill][SERVER] AFTER  nivel=" + chk.getValue('nivel') +
+              " di=" + chk.getValue('data_inicio') + " df=" + chk.getValue('data_fim'));
+      data.updated_sys_id = p.sys_id;
+    }
+  }
+
+} else {
+  data.error = "Registro para update não encontrado.";
+}
+
+
+  } else if (op === 'delete') {
+    var grd = new GlideRecord(TBL);
+    if (p.sys_id && grd.get(p.sys_id)) {
+      if (!grd.canDelete()) gs.throwException('Sem permissão para remover (ACL).');
+      grd.deleteRecord();
+      data.deleted_sys_id = p.sys_id;
+    } else data.error = "Registro para delete não encontrado.";
+
+  } else {
+    data.error = "Op inválida: " + safeStringify(op);
+  }
+} catch (e) {
+  var msg = (e && e.message) ? e.message : ("" + e);
+  gs.error("[mockSkill] erro: " + msg);
+  data.error = msg;
+}
+
+  // reload grid
+  data.rows = [];
+  var gr = new GlideRecord(TBL);
+  if (!canReadAll()) {
+    if (myColabId) gr.addQuery('colaborador', myColabId);
+    else gr.setLimit(0);
+  }
+  gr.orderBy('colaborador'); gr.orderBy('skill'); gr.query();
   while (gr.next()) {
-    data.items.push({
-      colaborador : gr.colaborador.getDisplayValue(),
-      skill       : gr.skill.getDisplayValue(),
-      nivel       : gr.nivel.getDisplayValue() || (gr.nivel + ''),
-      data_inicio : gr.data_inicio ? gr.data_inicio.getDisplayValue() : '',
-      data_fim    : gr.data_fim ? gr.data_fim.getDisplayValue() : ''
+    data.rows.push({
+      sys_id:            '' + gr.getUniqueValue(),
+      colaborador:       '' + gr.getValue('colaborador'),
+      colaborador_name:  '' + gr.getDisplayValue('colaborador'),
+      skill:             '' + gr.getValue('skill'),
+      skill_name:        '' + gr.getDisplayValue('skill'),
+      nivel:             '' + gr.getValue('nivel'),
+      data_inicio:       toBRDate(gr.getValue('data_inicio')),
+      data_fim:          toBRDate(gr.getValue('data_fim')),
+      _can_edit:         gr.canWrite(),
+      _can_delete:       gr.canDelete()
     });
   }
-})();]]></script>
+})();
+]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-29 15:34:55</sys_created_on>
         <sys_id>43aa1bdfc3e7a6104d7636dc05013186</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>msk-skill-list</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sp_widget_43aa1bdfc3e7a6104d7636dc05013186</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-09-03 13:21:03</sys_updated_on>
-        <template><![CDATA[<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 class="panel-title m-0">Minhas Skills</h4>
+        <sys_updated_on>2025-09-04 18:55:15</sys_updated_on>
+        <template><![CDATA[<div class="msk-card">
+  <div class="msk-card__header">
+    <div class="msk-card__title">
+      <i class="fa fa-code msk-title-icon"></i>
+      Minhas Skills
+    </div>
+    <div class="msk-card__subtitle">
+      Gerencie as skills do time com níveis e período de vigência
+    </div>
   </div>
 
-  <div class="panel-body">
-    <table class="table table-striped table-condensed">
-      <thead>
-        <tr>
-          <th>Colaborador</th>
-          <th>Skill</th>
-          <th>Nível</th>
-          <th>Data Inicio</th>
-          <th>Data Fim</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-if="!data.items.length">
-          <td colspan="3" class="text-muted">Nenhum registro encontrado.</td>
-        </tr>
-        <tr ng-repeat="row in data.items">
-          <td>{{::row.colaborador}}</td>
-          <td>{{::row.skill}}</td>
-          <td>{{::row.nivel}}</td>
-          <td>{{::row.data_inicio}}</td>
-          <td>{{::row.data_fim}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="text-right m-b">
-  <a class="btn btn-primary" href="/sp?id=sc_cat_item&sys_id=b5d506fbc32b2a104d7636dc0501317d">
-    Adicionar Skill
-  </a>
-</div>]]></template>
+  <div class="msk-card__body">
+    <!-- Barra de inclusão -->
+ <div class="msk-toolbar">
+  <div class="row">
+    <div class="col-sm-3" ng-if="c.data.canChooseColab">
+      <label class="msk-label">Colaborador</label>
+      <select class="form-control"
+              ng-model="c.new.colaborador"
+              ng-options="p.sys_id as p.name for p in (c.data.colaboradores || [])">
+        <option value="">-- selecione --</option>
+      </select>
+    </div>
+
+    <div class="col-sm-3">
+      <label class="msk-label">Skill</label>
+      <select class="form-control"
+              ng-model="c.new.skill"
+              ng-options="s.sys_id as s.name for s in (c.data.skills || [])">
+        <option value="">-- selecione --</option>
+      </select>
+    </div>
+
+    <div class="col-sm-2">
+      <label class="msk-label">Nível</label>
+      <select class="form-control"
+              ng-model="c.new.nivel"
+              ng-options="n.value as n.label for n in (c.data.niveis || [])">
+        <option value="">-- nível --</option>
+      </select>
+    </div>
+
+    <div class="col-sm-2">
+      <label class="msk-label">Início</label>
+      <input type="date" class="form-control" ng-model="c.new.data_inicio_obj">
+    </div>
+
+    <div class="col-sm-2">
+      <label class="msk-label">Fim</label>
+      <input type="date" class="form-control" ng-model="c.new.data_fim_obj">
+    </div>
+  </div>
+
+  <!-- linha de baixo: botão à direita -->
+  <div class="msk-toolbar__actions">
+    <button type="button" class="btn btn-primary msk-btn-primary" ng-click="c.add()">
+      <i class="fa fa-plus-circle"></i> Adicionar
+    </button>
+  </div>
+</div>
+
+    <!-- Tabela -->
+    <div class="table-responsive msk-table-wrap">
+      <table class="table table-striped table-condensed msk-table">
+        <thead>
+          <tr>
+            <th style="min-width:180px">Colaborador</th>
+            <th style="min-width:180px">Skill</th>
+            <th style="width:160px">Nível</th>
+            <th style="width:160px">Início</th>
+            <th style="width:160px">Fim</th>
+            <th style="width:160px" class="text-right">Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-if="!(c.data.rows && c.data.rows.length)">
+            <td colspan="6" class="text-muted text-center p-30">
+              <i class="fa fa-info-circle"></i> Nenhum registro encontrado.
+            </td>
+          </tr>
+
+          <tr ng-repeat="row in c.data.rows">
+            <td>
+              <div class="msk-cell-main">{{row.colaborador_name}}</div>
+            </td>
+
+            <td>
+              <span class="label label-default msk-chip">{{row.skill_name}}</span>
+            </td>
+
+            <td>
+              <select class="form-control input-sm"
+                      ng-model="row.nivel"
+                      ng-options="n.value as n.label for n in c.data.niveis"
+                      ng-disabled="!row._can_edit"></select>
+            </td>
+
+     <!-- Data início -->
+            <td>
+              <input type="text"
+                     class="form-control input-sm"
+                     placeholder="dd/mm/aaaa"
+                     ng-model="row.data_inicio"
+                     ng-disabled="!row._can_edit"
+                     pattern="\d{2}/\d{2}/\d{4}"
+                     title="dd/mm/aaaa">
+            </td>
+
+            <!-- Data fim -->
+            <td>
+              <input type="text"
+                     class="form-control input-sm"
+                     placeholder="dd/mm/aaaa"
+                     ng-model="row.data_fim"
+                     ng-disabled="!row._can_edit"
+                     pattern="\d{2}/\d{2}/\d{4}"
+                     title="dd/mm/aaaa">
+            </td>
+
+            <td class="text-right">
+              <div class="btn-group">
+                <button class="btn btn-success btn-xs"
+                        ng-click="c.save(row)"
+                        ng-disabled="!row._can_edit">
+                  <i class="fa fa-save"></i> Salvar
+                </button>
+                <button class="btn btn-danger btn-xs"
+                        ng-click="c.remove(row)"
+                        ng-disabled="!row._can_delete">
+                  <i class="fa fa-trash"></i> Remover
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <!-- Mensagens (opcional) -->
+    <div class="alert alert-warning mt-2" ng-if="c.lastError" style="margin-top:12px">
+      <i class="fa fa-exclamation-triangle"></i> {{c.lastError}}
+    </div>
+    <div class="alert alert-success mt-2" ng-if="c.lastSuccess" style="margin-top:12px">
+      <i class="fa fa-check-circle"></i> {{c.lastSuccess}}
+    </div>
+  </div>
+</div>
+]]></template>
     </sp_widget>
 </record_update>

@@ -27,25 +27,46 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-  var gr = new GlideRecord('x_snc_mock_skillup_skill_do_colaborador');
-  gr.addQuery('colaborador', current.colaborador);
-  gr.addQuery('skill', current.skill);
-  gr.setLimit(1);
-  gr.query();
-  if (gr.next()) {
-    gs.addErrorMessage('Este colaborador já possui esta skill.');
-    current.setAbortAction(true);
+        <script><![CDATA[(function () {
+  // Campos chave
+  var colab = current.getValue('colaborador');
+  var skill = current.getValue('skill');
+
+  // Se não houver os dois, não valida
+  if (!colab || !skill) return;
+
+  // Em UPDATE: se nem colaborador nem skill mudaram, não precisa checar duplicidade
+  // (permite alterar nível/datas sem travar)
+  if (!current.isNewRecord() && !current.colaborador.changes() && !current.skill.changes()) {
+    return;
   }
 
-})(current, previous);]]></script>
+  // Procura outro registro com o mesmo par (colaborador, skill)
+  var dup = new GlideRecord('x_snc_mock_skillup_skill_do_colaborador');
+  dup.addQuery('colaborador', colab);
+  dup.addQuery('skill', skill);
+
+  // MUITO IMPORTANTE: no update, ignore o próprio registro
+  if (!current.isNewRecord()) {
+    dup.addQuery('sys_id', '!=', current.getUniqueValue());
+  }
+
+  dup.setLimit(1);
+  dup.query();
+
+  if (dup.next()) {
+    gs.addErrorMessage('Este colaborador já possui esta skill.');
+    current.setAbortAction(true); // aborta a transação
+  }
+})();
+]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-13 13:24:31</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>529e6c1a9f5322107f44bcf72024ab13</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>bloquear duplicado de curso</sys_name>
         <sys_overrides/>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
@@ -53,7 +74,7 @@
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sys_script_529e6c1a9f5322107f44bcf72024ab13</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-13 13:24:31</sys_updated_on>
+        <sys_updated_on>2025-09-04 18:57:53</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>
