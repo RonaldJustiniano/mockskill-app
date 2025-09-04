@@ -7,45 +7,46 @@
         <condition/>
         <controlled_by_refs/>
         <decision_type>allow</decision_type>
-        <description>Allow read for records in x_snc_mock_skillup_colaborador, for users with roles (x_snc_mock_skillup.colaborador, x_snc_mock_skillup.gestor, x_snc_mock_skillup.admin), and if the ACL script returns true.</description>
+        <description>Allow read for records in x_snc_mock_skillup_colaborador, for users with roles (x_snc_mock_skillup.colaborador, x_snc_mock_skillup.gestor, x_snc_mock_skillup.admin, admin), and if the ACL script returns true.</description>
         <local_or_existing>Local</local_or_existing>
         <name>x_snc_mock_skillup_colaborador</name>
         <operation display_value="read">read</operation>
-        <script><![CDATA[function iAmThisCollaborator_() {
-  var meId = gs.getUserID();
-  var meEmail = (gs.getUser().getEmail() || '').trim().toLowerCase();
-  var ok = false;
+        <script><![CDATA[// Permite: admin/app_admin/gestor; colaborador só no que é dele.
+(function () {
+  function is(role){ return gs.hasRole(role); }
+  if (is('admin') || is('x_snc_mock_skillup.admin') || is('x_snc_mock_skillup.gestor')) { answer = true; return; }
 
-  if (current.isValidField('usuario'))
-    ok = ok || (current.getValue('usuario') == meId);
+  if (!gs.hasRole('x_snc_mock_skillup.colaborador')) { answer = false; return; }
+  try {
+    if (!current || !current.isValidField('colaborador')) { answer = false; return; }
 
-  if (meEmail && current.isValidField('email')) {
-    var recEmail = (current.getValue('email') || '').trim().toLowerCase();
-    ok = ok || (recEmail == meEmail);
-  }
-  return ok;
-}
+    var meId = gs.getUserID() || '';
+    var meEmail = (gs.getUser().getEmail() || '').toLowerCase();
+    var gr = new GlideRecord('x_snc_mock_skillup_colaborador');
+    var qc = gr.addQuery('usuario', meId);
+    if (meEmail) qc.addOrCondition('email', meEmail);
+    gr.setLimit(1); gr.query();
 
-answer = (gs.hasRole('admin') ||
-          gs.hasRole('x_snc_mock_skillup.admin') ||
-          gs.hasRole('x_snc_mock_skillup.gestor'));
+    var myColab = gr.next() ? ('' + gr.getUniqueValue()) : '';
+    var recColab = '' + current.getValue('colaborador');
+    answer = !!(myColab && recColab && myColab === recColab);
+  } catch (e) { answer = false; }
+})();
 
-if (!answer && gs.hasRole('x_snc_mock_skillup.colaborador')) {
-  answer = iAmThisCollaborator_();
-}]]></script>
+]]></script>
         <security_attribute/>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-09-01 14:24:26</sys_created_on>
         <sys_id>c772b210c377ea104d7636dc05013107</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>x_snc_mock_skillup_colaborador</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sys_security_acl_c772b210c377ea104d7636dc05013107</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-09-03 01:07:49</sys_updated_on>
+        <sys_updated_on>2025-09-04 22:45:40</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>
