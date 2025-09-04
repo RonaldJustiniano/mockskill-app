@@ -260,25 +260,39 @@ c.save = function(row) {
   box-shadow: 0 10px 18px rgba(99,102,241,0.25);
 }
 
-/* Table */
-.msk-table-wrap { margin-top: 8px; }
-.msk-table {
-  margin-bottom: 0;
+/* ===== LISTAGEM UNIFORME (sem listra branca) ===== */
+
+/* Desliga o striping padrão do Bootstrap */
+.msk-table.table-striped &gt; tbody &gt; tr:nth-of-type(odd),
+.msk-table.table-striped &gt; tbody &gt; tr:nth-of-type(even) {
+  background-color: transparent;
+}
+
+/* Fundo consistente para TODAS as linhas */
+.msk-table &gt; tbody &gt; tr {
+  background: rgba(15, 23, 42, 0.82); /* mesmo tom do card */
+}
+
+/* Hover discreto para foco visual */
+.msk-table &gt; tbody &gt; tr:hover {
+  background: rgba(30, 41, 59, 0.85);
+}
+
+/* Bordas mais suaves para combinar com o tema escuro */
+.msk-table &gt; tbody &gt; tr &gt; td,
+.msk-table &gt; thead &gt; tr &gt; th {
+  border-color: rgba(148, 163, 184, 0.12);
+}
+
+/* Inputs dentro da tabela continuam escuros e integrados */
+.msk-table .form-control {
+  background: #0b1220;
+  border: 1px solid rgba(148,163,184,0.22);
   color: #e5e7eb;
 }
-.msk-table &gt; thead &gt; tr &gt; th {
-  background: rgba(15,23,42,0.7);
-  border-bottom: 1px solid rgba(148,163,184,0.18);
-  color: #cbd5e1;
-  font-weight: 600;
-}
-.msk-table &gt; tbody &gt; tr &gt; td {
-  border-top: 1px solid rgba(148,163,184,0.12);
-  vertical-align: middle;
-}
-.msk-cell-main {
-  font-weight: 600;
-  color: #e2e8f0;
+.msk-table .form-control:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 2px rgba(96,165,250,0.25);
 }
 
 /* Chip de skill */
@@ -614,14 +628,14 @@ if (p.clear_data_fim === true) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-08-29 15:34:55</sys_created_on>
         <sys_id>43aa1bdfc3e7a6104d7636dc05013186</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>msk-skill-list</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sp_widget_43aa1bdfc3e7a6104d7636dc05013186</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-09-04 18:55:15</sys_updated_on>
+        <sys_updated_on>2025-09-04 19:03:42</sys_updated_on>
         <template><![CDATA[<div class="msk-card">
   <div class="msk-card__header">
     <div class="msk-card__title">
