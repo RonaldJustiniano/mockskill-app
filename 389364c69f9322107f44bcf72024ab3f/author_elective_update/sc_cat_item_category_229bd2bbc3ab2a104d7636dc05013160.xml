@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="DELETE">
+        <sc_cat_item display_value="Adicionar Skill do colaborador">b5d506fbc32b2a104d7636dc0501317d</sc_cat_item>
+        <sc_category display_value="Skill do colaborador">6b8bde7bc3ab2a104d7636dc050131cb</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-30 23:26:48</sys_created_on>
+        <sys_id>229bd2bbc3ab2a104d7636dc05013160</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Skill do colaborador.Adicionar Skill do colaborador</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sc_cat_item_category_229bd2bbc3ab2a104d7636dc05013160</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-30 23:26:48</sys_updated_on>
+    </sc_cat_item_category>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</application>
+        <file_path/>
+        <instance_id>92e52a173b67ca14a36804e0b5e45a01</instance_id>
+        <instance_name>dev280770</instance_name>
+        <name>sc_cat_item_category_229bd2bbc3ab2a104d7636dc05013160</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="INSERT_OR_UPDATE">
+        <sc_cat_item display_value="Adicionar Skill do colaborador">b5d506fbc32b2a104d7636dc0501317d</sc_cat_item>
+        <sc_category display_value="Skill do colaborador">6b8bde7bc3ab2a104d7636dc050131cb</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-30 23:26:48</sys_created_on>
+        <sys_id>229bd2bbc3ab2a104d7636dc05013160</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Skill do colaborador.Adicionar Skill do colaborador</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sc_cat_item_category_229bd2bbc3ab2a104d7636dc05013160</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-30 23:26:48</sys_updated_on>
+    </sc_cat_item_category>
+</record_update>]]></payload>
+        <payload_hash>2020579977</payload_hash>
+        <record_name>Skill do colaborador.Adicionar Skill do colaborador</record_name>
+        <reverted_from/>
+        <source>4cd74f9dc3f3e2104d7636dc0501318a</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-04 18:31:42</sys_created_on>
+        <sys_id>b4088711c337e2104d7636dc05013102</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19915ffb1a30000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-04 18:31:42</sys_updated_on>
+        <type>Catalog Item Category</type>
+        <update_guid>b0088711e837e2106df2275373e90602</update_guid>
+        <update_guid_history>b0088711e837e2106df2275373e90602:0,54470f1d2df3e210fc2171bbbdef0e44:-154954753,629bd2bbf4ab2a10676cc38bd3c5df63:-233980269</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Skill do colaborador.Adicionar Skill do colaborador">fd4970edc37f22104d7636dc0501316a</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-05 02:46:34</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_category">sc_cat_item_category</sys_db_object>
+        <sys_id>9dbd6b3b2e10498aa1d331b37119eae4</sys_id>
+        <sys_metadata>229bd2bbc3ab2a104d7636dc05013160</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Skill do colaborador.Adicionar Skill do colaborador</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_scope_delete display_value="">1ef33293978743289a870dba302e2240</sys_scope_delete>
+        <sys_update_name>sc_cat_item_category_229bd2bbc3ab2a104d7636dc05013160</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_category_229bd2bbc3ab2a104d7636dc05013160">b4088711c337e2104d7636dc05013102</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-05 02:46:34</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

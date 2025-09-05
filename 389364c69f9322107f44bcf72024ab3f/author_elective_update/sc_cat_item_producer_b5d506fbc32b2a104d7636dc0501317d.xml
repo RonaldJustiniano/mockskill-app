@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_producer">
+    <sc_cat_item_producer action="DELETE">
+        <access_type>restricted</access_type>
+        <active>true</active>
+        <allow_edit>false</allow_edit>
+        <availability>on_desktop</availability>
+        <billable>false</billable>
+        <can_cancel>false</can_cancel>
+        <category/>
+        <checked_out/>
+        <cost>0</cost>
+        <custom_cart/>
+        <delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan>
+        <delivery_plan_script/>
+        <delivery_time>1970-01-03 00:00:00</delivery_time>
+        <description/>
+        <display_price_property>non_zero</display_price_property>
+        <entitlement_script/>
+        <flow_designer_flow/>
+        <fulfillment_automation_level>unspecified</fulfillment_automation_level>
+        <group/>
+        <hide_sp>false</hide_sp>
+        <icon/>
+        <ignore_price>true</ignore_price>
+        <image/>
+        <location/>
+        <make_item_non_conversational>false</make_item_non_conversational>
+        <mandatory_attachment>false</mandatory_attachment>
+        <meta/>
+        <mobile_hide_price>false</mobile_hide_price>
+        <mobile_picture/>
+        <mobile_picture_type>use_desktop_picture</mobile_picture_type>
+        <model/>
+        <name>Adicionar Skill do colaborador</name>
+        <no_attachment_v2>false</no_attachment_v2>
+        <no_cart>false</no_cart>
+        <no_cart_v2>false</no_cart_v2>
+        <no_delivery_time_v2>false</no_delivery_time_v2>
+        <no_order>false</no_order>
+        <no_order_now>false</no_order_now>
+        <no_proceed_checkout>false</no_proceed_checkout>
+        <no_quantity>false</no_quantity>
+        <no_quantity_v2>false</no_quantity_v2>
+        <no_save_as_draft>false</no_save_as_draft>
+        <no_search>false</no_search>
+        <no_wishlist_v2>false</no_wishlist_v2>
+        <omit_price>false</omit_price>
+        <order>0</order>
+        <ordered_item_link/>
+        <owner display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</owner>
+        <picture/>
+        <post_insert_script><![CDATA[/**
+* This script is executed after the record is generated. 
+* `current` Is the GlideRecord produced by Record Producer. Use `current.update()` to update the record
+* To access the variables, use `producer.var1` where var1 is the name of the variable
+* To access the Record Producer use `cat_item`
+*/]]></post_insert_script>
+        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=b5d506fbc32b2a104d7636dc0501317d&amp;sysparm_preview=true", "summary");</preview>
+        <price>0</price>
+        <published_ref/>
+        <recurring_frequency/>
+        <redirect_url>generated_record</redirect_url>
+        <request_method/>
+        <roles/>
+        <save_options/>
+        <save_script><![CDATA[/**
+* This script is executed at every step save in Catalog Builder. 
+* This script is executed before `Script` is executed.
+* `current` Is the GlideRecord produced by Record Producer. 
+* To access the variables, use `producer.var1` where var1 is the name of the variable
+* To access the Record Producer use `cat_item`
+*/]]></save_script>
+        <sc_catalogs/>
+        <sc_ic_item_staging/>
+        <sc_ic_version/>
+        <sc_template/>
+        <script/>
+        <short_description/>
+        <show_variable_help_on_load>false</show_variable_help_on_load>
+        <start_closed>false</start_closed>
+        <state/>
+        <sys_class_name>sc_cat_item_producer</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-30 21:52:38</sys_created_on>
+        <sys_id>b5d506fbc32b2a104d7636dc0501317d</sys_id>
+        <sys_mod_count>62</sys_mod_count>
+        <sys_name>Adicionar Skill do colaborador</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sc_cat_item_producer_b5d506fbc32b2a104d7636dc0501317d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-05 02:46:34</sys_updated_on>
+        <table_name>x_snc_mock_skillup_skill_do_colaborador</table_name>
+        <taxonomy_topic/>
+        <template/>
+        <template_manager_roles/>
+        <type>item</type>
+        <use_sc_layout>true</use_sc_layout>
+        <vendor/>
+        <version>63</version>
+        <view/>
+        <visible_bundle>true</visible_bundle>
+        <visible_guide>true</visible_guide>
+        <visible_standalone>true</visible_standalone>
+        <workflow/>
+    </sc_cat_item_producer>
+    <sys_translated_text action="DELETE" query="documentkey=b5d506fbc32b2a104d7636dc0501317d"/>
+    <fx_price action="DELETE" query="id=b5d506fbc32b2a104d7636dc0501317d"/>
+    <fx_price action="DELETE">
+        <amount>0</amount>
+        <currency display_value="BRL">BRL</currency>
+        <field>price</field>
+        <id>b5d506fbc32b2a104d7636dc0501317d</id>
+        <parent/>
+        <reference_amount>0</reference_amount>
+        <reference_currency display_value="USD">USD</reference_currency>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-30 21:52:38</sys_created_on>
+        <sys_id>53064afbc32b2a104d7636dc05013154</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-30 21:52:38</sys_updated_on>
+        <table>sc_cat_item_producer</table>
+        <type>calculated</type>
+    </fx_price>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</application>
+        <file_path/>
+        <instance_id>92e52a173b67ca14a36804e0b5e45a01</instance_id>
+        <instance_name>dev280770</instance_name>
+        <name>sc_cat_item_producer_b5d506fbc32b2a104d7636dc0501317d</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sc_cat_item_producer"&gt;&lt;sc_cat_item_producer action="INSERT_OR_UPDATE"&gt;&lt;access_type&gt;restricted&lt;/access_type&gt;&lt;active&gt;true&lt;/active&gt;&lt;allow_edit&gt;false&lt;/allow_edit&gt;&lt;availability&gt;on_desktop&lt;/availability&gt;&lt;billable&gt;false&lt;/billable&gt;&lt;can_cancel&gt;false&lt;/can_cancel&gt;&lt;category/&gt;&lt;checked_out/&gt;&lt;cost&gt;0&lt;/cost&gt;&lt;custom_cart/&gt;&lt;delivery_plan display_value="DEFAULT"&gt;523da512c611228900811a37c97c2014&lt;/delivery_plan&gt;&lt;delivery_plan_script/&gt;&lt;delivery_time&gt;1970-01-03 00:00:00&lt;/delivery_time&gt;&lt;description/&gt;&lt;display_price_property&gt;non_zero&lt;/display_price_property&gt;&lt;entitlement_script/&gt;&lt;flow_designer_flow/&gt;&lt;fulfillment_automation_level&gt;unspecified&lt;/fulfillment_automation_level&gt;&lt;group/&gt;&lt;hide_sp&gt;false&lt;/hide_sp&gt;&lt;icon/&gt;&lt;ignore_price&gt;true&lt;/ignore_price&gt;&lt;image/&gt;&lt;location/&gt;&lt;make_item_non_conversational&gt;false&lt;/make_item_non_conversational&gt;&lt;mandatory_attachment&gt;false&lt;/mandatory_attachment&gt;&lt;meta/&gt;&lt;mobile_hide_price&gt;false&lt;/mobile_hide_price&gt;&lt;mobile_picture/&gt;&lt;mobile_picture_type&gt;use_desktop_picture&lt;/mobile_picture_type&gt;&lt;model/&gt;&lt;name&gt;Adicionar Skill do colaborador&lt;/name&gt;&lt;no_attachment_v2&gt;false&lt;/no_attachment_v2&gt;&lt;no_cart&gt;false&lt;/no_cart&gt;&lt;no_cart_v2&gt;false&lt;/no_cart_v2&gt;&lt;no_delivery_time_v2&gt;false&lt;/no_delivery_time_v2&gt;&lt;no_order&gt;false&lt;/no_order&gt;&lt;no_order_now&gt;false&lt;/no_order_now&gt;&lt;no_proceed_checkout&gt;false&lt;/no_proceed_checkout&gt;&lt;no_quantity&gt;false&lt;/no_quantity&gt;&lt;no_quantity_v2&gt;false&lt;/no_quantity_v2&gt;&lt;no_save_as_draft&gt;false&lt;/no_save_as_draft&gt;&lt;no_search&gt;false&lt;/no_search&gt;&lt;no_wishlist_v2&gt;false&lt;/no_wishlist_v2&gt;&lt;omit_price&gt;false&lt;/omit_price&gt;&lt;order&gt;0&lt;/order&gt;&lt;ordered_item_link/&gt;&lt;owner display_value="System Administrator"&gt;6816f79cc0a8016401c5a33be04be441&lt;/owner&gt;&lt;picture/&gt;&lt;post_insert_script&gt;&lt;![CDATA[/**
+* This script is executed after the record is generated. 
+* `current` Is the GlideRecord produced by Record Producer. Use `current.update()` to update the record
+* To access the variables, use `producer.var1` where var1 is the name of the variable
+* To access the Record Producer use `cat_item`
+*/]]&gt;&lt;/post_insert_script&gt;&lt;preview&gt;JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;amp;sysparm_id=b5d506fbc32b2a104d7636dc0501317d&amp;amp;sysparm_preview=true", "summary");&lt;/preview&gt;&lt;price&gt;0&lt;/price&gt;&lt;published_ref/&gt;&lt;recurring_frequency/&gt;&lt;redirect_url&gt;generated_record&lt;/redirect_url&gt;&lt;request_method/&gt;&lt;roles/&gt;&lt;save_options/&gt;&lt;save_script&gt;&lt;![CDATA[/**
+* This script is executed at every step save in Catalog Builder. 
+* This script is executed before `Script` is executed.
+* `current` Is the GlideRecord produced by Record Producer. 
+* To access the variables, use `producer.var1` where var1 is the name of the variable
+* To access the Record Producer use `cat_item`
+*/]]&gt;&lt;/save_script&gt;&lt;sc_catalogs/&gt;&lt;sc_ic_item_staging/&gt;&lt;sc_ic_version/&gt;&lt;sc_template/&gt;&lt;script/&gt;&lt;short_description/&gt;&lt;show_variable_help_on_load&gt;false&lt;/show_variable_help_on_load&gt;&lt;start_closed&gt;false&lt;/start_closed&gt;&lt;state/&gt;&lt;sys_class_name&gt;sc_cat_item_producer&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-08-30 21:52:38&lt;/sys_created_on&gt;&lt;sys_id&gt;b5d506fbc32b2a104d7636dc0501317d&lt;/sys_id&gt;&lt;sys_mod_count&gt;62&lt;/sys_mod_count&gt;&lt;sys_name&gt;Adicionar Skill do colaborador&lt;/sys_name&gt;&lt;sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup"&gt;389364c69f9322107f44bcf72024ab3f&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value=" Mock SkillUp"&gt;389364c69f9322107f44bcf72024ab3f&lt;/sys_scope&gt;&lt;sys_update_name&gt;sc_cat_item_producer_b5d506fbc32b2a104d7636dc0501317d&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-09-05 02:46:34&lt;/sys_updated_on&gt;&lt;table_name&gt;x_snc_mock_skillup_skill_do_colaborador&lt;/table_name&gt;&lt;taxonomy_topic/&gt;&lt;template/&gt;&lt;template_manager_roles/&gt;&lt;type&gt;item&lt;/type&gt;&lt;use_sc_layout&gt;true&lt;/use_sc_layout&gt;&lt;vendor/&gt;&lt;version&gt;63&lt;/version&gt;&lt;view/&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;workflow/&gt;&lt;/sc_cat_item_producer&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=b5d506fbc32b2a104d7636dc0501317d"/&gt;&lt;fx_price action="delete_multiple" query="id=b5d506fbc32b2a104d7636dc0501317d"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price&lt;/field&gt;&lt;id&gt;b5d506fbc32b2a104d7636dc0501317d&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-08-30 21:52:38&lt;/sys_created_on&gt;&lt;sys_id&gt;53064afbc32b2a104d7636dc05013154&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-08-30 21:52:38&lt;/sys_updated_on&gt;&lt;table&gt;sc_cat_item_producer&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>850753880</payload_hash>
+        <record_name>Adicionar Skill do colaborador</record_name>
+        <reverted_from/>
+        <source>20488b5dc3f3e2104d7636dc050131a2</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-05 02:46:35</sys_created_on>
+        <sys_id>354970edc37f22104d7636dc05013173</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19917c4c3ea0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-05 02:46:35</sys_updated_on>
+        <type>Record Producer</type>
+        <update_guid>794970edd87f2210fc68a9ada62f3b72</update_guid>
+        <update_guid_history>794970edd87f2210fc68a9ada62f3b72:850753880,7c088711af37e2102b05918243e7221e:0,73570b5d4af3e2107c7d7d627a646f18:-829664344,f657875d0cf3e2102442c54f62c9079f:1593479100,0d57c35dcff3e2105bd40843b4469deb:-745286486,a057c35d8bf3e2108a1bc7caf20fd903:1068887883,ab47435dd1f3e2101be9865871168341:-1411905044,7647035da0f3e210e4b5faa1f6f9d60a:402269325,0d474f1dabf3e21077cda2d04d2a3131:-2078523602,1c470f1da3f3e210f8b88e90d5b67f41:-264349233,7337cb1dfbf3e21085a8ea48d3affbdb:-1189805666,32a7384191ff2210618da292c8530a7f:624368703,03d3740d9ebf2210b2e5b1475c576fed:-1856424224,5962b449dfbf2210bc685ee697afe7c7:-599293770,0932fc0923bf2210fdbe139abbc606d0:1214880599,55e1700987bf2210d7c80085450aaef1:-1265912328,da4138c543bf2210dba46d942627cfae:1523988992,2cb0f88599bf221056a89cde0b4e034e:-956803935,6b90f485d8bf221033f0a1f36c8629b1:857370434,d45fe80573bf2210ae863fff8ac44cfa:-1623422493,811fa40540bf2210a32187c70e27898d:190751876,1a4e24c13bbf2210f6489600bdabb340:225118588,711de841adbf22109cbe460a28a51610:2039292957,2dcc2ccd747f22105663e389d2e9f7e1:1855290367,ce1caccd057f2210f0885bb3864ea85f:1691339704,4dbb2ccd1d7f2210d39a8a8b3b48f6a7:-1017963936,bc1bac8d867f2210952822ea6b2cc8cc:-698848481,91f9284dd47f2210947057ad67a41267:-2034219477,3f69e4899d7f2210a96f23042563b5e4:-1713370289,be09ec89b87f22102ed4673872f814d3:-440812289,c096ec09057f2210b7e3155a2b99adaf:-163997553,d0056c85d17f221002d8978fdd5fe8aa:-1196247000,e8442405cc7f22101698b1ef4af417fb:1012969673,47e3ec056b7f2210e5e175e945d84253:1126167255,a443e005a87f221031c06296729eb899:-1354625672,66f228c1587f2210c5db856beed8378b:1830834249,f8d2e4c1f97f221005bc581ac63a63f9:-649958678,1cb26c81607f2210983954b1a5d9276b:1164215691,23226881b17f22101954fb0a5da589cb:-1316577236,db122801327f2210f1d1af155c0a57b1:497597133,b16950c5f53f2210b47d033acec31dce:205152054,22b2a2f0f2f32210091fca14973dc07d:848621062,db82a2f088f32210df7ad81021b25672:-641932451,7212a2b060f3221069128915ffe13743:-375041411,88d1aa7056f32210850cee3d4d8bd525:1439132958,4a31aa3045f32210bfbb11be624605fc:-1041659969,4fe0eafc8eb32210962993657c09e2a2:689381061,53a0263002f32210527c1eff6baa8f65:1643639665,322026fc3ab322109938aa6b8cdbcaaf:-837153262,4f0f9a7cbbb322107683a55ccec2a795:977021107,807e9a3c91b32210c189b06b18df6134:-1503771820,435ed63cfcb322107daee77ed16effc9:310402549,f14e563c0eb32210ab5151b6ca645330:2124576918,fc7dd2f8aeb322105131e3676715bfca:-913259924,89cc16b881b322105e8c646646a7ff31:-2016318244,669bd2bbcaab2a1049303ead72772165:-202143875,83ad0ab72c6b2a1018342e0f01f8745f:1716795144,8f8c0277916b2a10a87ed373d73e9feb:377086397,033c4637246b2a10353feddf3fef162a:-2103706530,862cc637c46b2a105e779ce0e188606f:-1531496971,e58b0af30b6b2a101d84cbb2c96099bd:282677398,dc28c2bfe12b2a1054fc9c8287500d93:2096851767,75184abf702b2a109fc8c37264c36ff4:-383941160,c4180abfc12b2a108d498b0795981014:1412811652,360802bf242b2a1086bdf0e1c2bfeab4:-1067981275,9d08c6bf722b2a1000f35128333238bb:746193094,d008c6bf632b2a1065dd846de634f196:-1734599833,fb570a7fe52b2a10b35244c439f9eae7:79574536,f847c27fdf2b2a10443ec2b93ab71488:224993467,edf6ce3f2f2b2a10959c7ba22d456988:2039167836,b4c6ca3fab2b2a105975cdbf6229f204:-441625091,5b064afb2a2b2a106f794fd5fb989076:1372549278,57064afbb82b2a1082239bab8bb27b71:-721970250</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Adicionar Skill do colaborador">714970edc37f22104d7636dc05013178</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-05 02:46:35</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_producer">sc_cat_item_producer</sys_db_object>
+        <sys_id>6c634119215c4e6985eb470e94b04369</sys_id>
+        <sys_metadata>b5d506fbc32b2a104d7636dc0501317d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Adicionar Skill do colaborador</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_parent display_value="Skill do Colaborador">668d2c069fd322107f44bcf72024ab5b</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_scope_delete display_value="">1ef33293978743289a870dba302e2240</sys_scope_delete>
+        <sys_update_name>sc_cat_item_producer_b5d506fbc32b2a104d7636dc0501317d</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_producer_b5d506fbc32b2a104d7636dc0501317d">354970edc37f22104d7636dc05013173</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-05 02:46:35</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

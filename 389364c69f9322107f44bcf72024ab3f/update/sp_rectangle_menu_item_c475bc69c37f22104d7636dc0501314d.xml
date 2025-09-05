@@ -12,31 +12,31 @@
         <kb_article/>
         <kb_category/>
         <kb_topic/>
-        <label>Certificados</label>
-        <order>98</order>
+        <label>Catálogo</label>
+        <order>99</order>
         <record_script/>
         <sc_cat_item/>
         <sc_category/>
         <short_description/>
-        <sp_page display_value="msk_certificados">9aac5429c3fb22104d7636dc0501316b</sp_page>
+        <sp_page display_value="sc_home">fe87a11147132100ba13a5554ee490b9</sp_page>
         <sp_rectangle_menu display_value="msk_menu">c714d42dc3bb22104d7636dc050131a1</sp_rectangle_menu>
         <sp_rectangle_menu_item/>
         <sys_class_name>sp_rectangle_menu_item</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-09-05 00:41:45</sys_created_on>
-        <sys_id>c8ac1429c3fb22104d7636dc050131c7</sys_id>
-        <sys_mod_count>1</sys_mod_count>
-        <sys_name>Certificados</sys_name>
+        <sys_created_on>2025-09-05 02:30:11</sys_created_on>
+        <sys_id>c475bc69c37f22104d7636dc0501314d</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Catálogo</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
-        <sys_update_name>sp_rectangle_menu_item_c8ac1429c3fb22104d7636dc050131c7</sys_update_name>
+        <sys_update_name>sp_rectangle_menu_item_c475bc69c37f22104d7636dc0501314d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-09-05 02:31:01</sys_updated_on>
+        <sys_updated_on>2025-09-05 02:57:15</sys_updated_on>
         <table/>
         <type>page</type>
-        <url/>
+        <url>sp?id=sc_category&amp;sys_id=60f586fbc32b2a104d7636dc050131c5</url>
         <url_target/>
     </sp_rectangle_menu_item>
-    <sys_translated_text action="delete_multiple" query="documentkey=c8ac1429c3fb22104d7636dc050131c7"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=c475bc69c37f22104d7636dc0501314d"/>
 </record_update>

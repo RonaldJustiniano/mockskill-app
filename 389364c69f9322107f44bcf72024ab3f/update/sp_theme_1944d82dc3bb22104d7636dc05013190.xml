@@ -7,6 +7,13 @@
 body.portal{background:var(--msk-bg);color:var(--msk-text);}&#13;
 .table-striped&gt;tbody&gt;tr:nth-of-type(odd){background:rgba(255,255,255,.02);}&#13;
 .table&gt;tbody&gt;tr&gt;td,.table&gt;thead&gt;tr&gt;th{border-color:var(--msk-border);}&#13;
+.navbar-inverse .navbar-nav &gt; li.active &gt; a,&#13;
+.navbar-inverse .navbar-nav &gt; li &gt; a:hover {&#13;
+  color: #fff;&#13;
+  border-bottom: 2px solid #60a5fa;&#13;
+  background: transparent;&#13;
+}&#13;
+&#13;
 </css_variables>
         <footer display_value="msk_footer_polaris">e71c6869c33f22104d7636dc050131ac</footer>
         <footer_fixed>true</footer_fixed>
@@ -18,14 +25,14 @@ body.portal{background:var(--msk-bg);color:var(--msk-text);}&#13;
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-09-05 00:05:22</sys_created_on>
         <sys_id>1944d82dc3bb22104d7636dc05013190</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>msk_theme</sys_name>
         <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
         <sys_policy/>
         <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
         <sys_update_name>sp_theme_1944d82dc3bb22104d7636dc05013190</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-09-05 01:49:42</sys_updated_on>
+        <sys_updated_on>2025-09-05 02:27:26</sys_updated_on>
         <turn_off_scss_compilation>false</turn_off_scss_compilation>
     </sp_theme>
 </record_update>
