@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope, $window) {
+  var c = $scope.c = this;
+
+  // inicializa com dados do servidor
+  c.rows   = ($scope.data && $scope.data.rows)  ? $scope.data.rows  : [];
+  c.error  = ($scope.data && $scope.data.error) ? $scope.data.error : '';
+  c.total  = ($scope.data && $scope.data.total) ? $scope.data.total : 0;
+  c.page   = ($scope.data && $scope.data.page)  ? $scope.data.page  : 1;
+  c.pageSize = ($scope.data && $scope.data.pageSize) ? $scope.data.pageSize : 10;
+
+  c.q = '';
+  c.loading = false;
+
+  c.load = function () {
+    c.loading = true;
+    c.server.get({ q: c.q, page: c.page, pageSize: c.pageSize }).then(function(res){
+      c.rows   = res.rows   || [];
+      c.error  = res.error  || '';
+      c.total  = res.total  || 0;
+      c.page   = res.page   || 1;
+      c.pageSize = res.pageSize || 10;
+      c.loading = false;
+    });
+  };
+
+  c.search = function(){ c.page = 1; c.load(); };
+
+  c.prev = function(){ if (c.page > 1) { c.page--; c.load(); } };
+  c.next = function(){ if (c.page * c.pageSize < c.total) { c.page++; c.load(); } };
+
+  c.rangeText = function(){
+    if (!c.total) return '0 de 0';
+    var from = (c.page - 1) * c.pageSize + 1;
+    var to   = Math.min(c.page * c.pageSize, c.total);
+    return from + '–' + to + ' de ' + c.total;
+  };
+
+  c.goBack = function () {
+    if ($window.history.length > 1) $window.history.back();
+    else $window.location = '/msk?id=msk_home';
+  };
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.msk-card{background:#0f172a;color:#e5e7eb;border:1px solid rgba(148,163,184,.15);border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,.35);overflow:hidden}
+.msk-colab__header{display:flex;gap:12px;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;padding:14px 16px}
+.msk-search{width:340px;max-width:40%}
+.msk-btn{border:none;background:#0f172a;color:#fff;border-radius:10px;padding:8px 12px}
+.msk-btn--ghost{background:transparent;border:1px solid rgba(255,255,255,.6)}
+.table-striped&gt;tbody&gt;tr:nth-of-type(odd){background:rgba(255,255,255,.02)}
+.table&gt;tbody&gt;tr&gt;td,.table&gt;thead&gt;tr&gt;th{border-color:rgba(148,163,184,.15)}
+
+.msk-pager{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.msk-pager__range{opacity:.8}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>colaboradores</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>msk_colab</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>msk_colab</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function () {
+  data.rows = [];
+  data.error = '';
+
+  // paginação (defaults)
+  data.page = parseInt((input && input.page) || 1, 10);
+  data.pageSize = parseInt((input && input.pageSize) || 10, 10);
+  if (isNaN(data.page) || data.page < 1) data.page = 1;
+  if (isNaN(data.pageSize) || data.pageSize < 1) data.pageSize = 10;
+
+  // permissão
+  var canAdmin = gs.hasRole('admin') ||
+                 gs.hasRole('x_snc_mock_skillup.admin') ||
+                 gs.hasRole('x_snc_mock_skillup.gestor');
+  if (!canAdmin) { data.error = 'forbidden'; return; }
+
+  var T_COL = 'x_snc_mock_skillup_colaborador';
+  var q = (input && input.q) ? ('' + input.q).trim() : '';
+
+  // aplica filtros em GA/GR
+  var applyFilters = function (rec, queryStr) {
+    var added = false;
+    function addOr(field) {
+      if (field.indexOf('.') !== -1) {
+        try {
+          if (!added) { rec.addQuery(field, 'CONTAINS', queryStr); added = true; }
+          else { rec.addOrCondition(field, 'CONTAINS', queryStr); }
+        } catch (e) {}
+      } else if (rec.isValidField(field)) {
+        if (!added) { rec.addQuery(field, 'CONTAINS', queryStr); added = true; }
+        else { rec.addOrCondition(field, 'CONTAINS', queryStr); }
+      }
+    }
+    addOr('nome');
+    addOr('email');
+    addOr('user_id.name');
+    addOr('departamento.name');
+    addOr('localizacao.name');
+  };
+
+  // total
+  var ga = new GlideAggregate(T_COL);
+  if (q) applyFilters(ga, q);
+  ga.addAggregate('COUNT');
+  ga.query();
+  data.total = ga.next() ? parseInt(ga.getAggregate('COUNT'), 10) || 0 : 0;
+
+  // consulta (puxa até o fim da página e descarta o "offset" via contador)
+  var gr = new GlideRecord(T_COL);
+  if (q) applyFilters(gr, q);
+  if (gr.isValidField('nome')) gr.orderBy('nome'); else gr.orderBy('sys_created_on');
+
+  var start = (data.page - 1) * data.pageSize;     // índice inicial (0-based)
+  var limitToFetch = data.page * data.pageSize;    // otimiza sem usar setOffset
+  gr.setLimit(limitToFetch);
+
+  gr.query();
+
+  // helper idade
+  var calcIdade = function(iso){
+    if (!iso) return '';
+    var nasc = new GlideDateTime(iso);
+    var hoje = new GlideDateTime();
+    var y = parseInt(hoje.getYearUTC(),10) - parseInt(nasc.getYearUTC(),10);
+    var m = parseInt(hoje.getMonthUTC(),10) - parseInt(nasc.getMonthUTC(),10);
+    var d = parseInt(hoje.getDayOfMonthUTC(),10) - parseInt(nasc.getDayOfMonthUTC(),10);
+    if (m < 0 || (m === 0 && d < 0)) y -= 1;
+    return y;
+  };
+
+  var idx = 0;
+  var end = start + data.pageSize;
+
+  while (gr.next()) {
+    // pula até o "offset"
+    if (idx >= start && idx < end) {
+      data.rows.push({
+        table: T_COL,
+        sys_id: '' + gr.getUniqueValue(),
+        nome:   '' + (gr.isValidField('nome')  ? (gr.getValue('nome')  || '') : (gr.getDisplayValue() || '')),
+        email:  '' + (gr.isValidField('email') ? (gr.getValue('email') || '') : ''),
+        departamento: gr.isValidField('departamento') ? '' + (gr.getDisplayValue('departamento') || '') : '',
+        supervisor:   gr.isValidField('supervisor')   ? '' + (gr.getDisplayValue('supervisor')   || '')
+                     : (gr.isValidField('gestor')     ? '' + (gr.getDisplayValue('gestor')      || '') : ''),
+        idade:  gr.isValidField('idade') ? '' + (gr.getValue('idade') || '')
+              : (gr.isValidField('data_nascimento') ? '' + calcIdade(gr.getValue('data_nascimento')) : ''),
+        localizacao: gr.isValidField('localizacao') ? '' + (gr.getDisplayValue('localizacao') || '') : '',
+        usuario: '' + (gr.getDisplayValue('user_id') || '')
+      });
+    }
+    idx++;
+    if (idx >= end) break; // já montamos a página inteira
+  }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-05 01:04:04</sys_created_on>
+        <sys_id>1f812c6dc3fb22104d7636dc05013171</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>msk_colab</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sp_widget_1f812c6dc3fb22104d7636dc05013171</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-05 01:26:05</sys_updated_on>
+        <template><![CDATA[<div class="msk-colab msk-card">
+  <div class="msk-colab__header">
+    <button class="msk-btn msk-btn--ghost" ng-click="c.goBack()">
+      <i class="fa fa-arrow-left"></i> Voltar
+    </button>
+    <h3 class="m-0">Colaboradores</h3>
+
+    <div class="input-group msk-search">
+      <input type="search" class="form-control" placeholder="Buscar por nome, e-mail, equipe..."
+             ng-model="c.q" ng-keypress="$event.which===13 && c.search()">
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="c.search()"><i class="fa fa-search"></i></button>
+      </span>
+    </div>
+  </div>
+
+  <div class="p-3" ng-if="!c.error">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Departamento</th>
+          <th>Supervisor</th>
+          <th>Idade</th>
+          <th>Localização</th>
+          <th class="text-right">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in c.rows">
+          <td>{{row.nome || '—'}}</td>
+          <td>{{row.email || '—'}}</td>
+          <td>{{row.departamento || '—'}}</td>
+          <td>{{row.supervisor || '—'}}</td>
+          <td>{{row.idade || '—'}}</td>
+          <td>{{row.localizacao || '—'}}</td>
+          <td class="text-right">
+            <a class="btn btn-link" ng-href="/nav_to.do?uri={{row.table}}.do?sys_id={{row.sys_id}}">Abrir</a>
+          </td>
+        </tr>
+        <tr ng-if="!c.loading && (!c.rows || !c.rows.length)">
+          <td colspan="7" class="text-center text-muted">Nenhum colaborador encontrado.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-center" ng-if="c.loading">
+      <span class="fa fa-spinner fa-spin"></span> Carregando...
+    </div>
+  <div class="msk-pager" ng-if="c.total">
+    <span class="msk-pager__range">{{ c.rangeText() }}</span>
+    <div class="btn-group">
+      <button class="btn btn-default" ng-disabled="c.page<=1" ng-click="c.prev()">Anterior</button>
+      <button class="btn btn-default" ng-disabled="c.page*c.pageSize>=c.total" ng-click="c.next()">Próxima</button>
+    </div>
+  </div>
+</div>
+
+  <div class="p-3 text-center text-danger" ng-if="c.error==='forbidden'">
+    Você não tem permissão para ver esta página.
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

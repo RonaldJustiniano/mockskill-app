@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="DELETE">
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Início - Container 2</name>
+        <order>2</order>
+        <semantic_tag/>
+        <sp_page display_value="msk_home">158318e9c3bb22104d7636dc050131b9</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-05 00:47:59</sys_created_on>
+        <sys_id>6c2ed0a9c3fb22104d7636dc050131bf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Início - Container 2</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sp_container_6c2ed0a9c3fb22104d7636dc050131bf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-05 00:47:59</sys_updated_on>
+        <title/>
+        <width>container</width>
+    </sp_container>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</application>
+        <file_path/>
+        <instance_id>92e52a173b67ca14a36804e0b5e45a01</instance_id>
+        <instance_name>dev280770</instance_name>
+        <name>sp_container_6c2ed0a9c3fb22104d7636dc050131bf</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container"><sp_container action="INSERT_OR_UPDATE"><background_color/><background_image/><background_style>default</background_style><bootstrap_alt>false</bootstrap_alt><class_name/><container_class_name/><name>Início - Container 2</name><order>2</order><semantic_tag/><sp_page display_value="msk_home">158318e9c3bb22104d7636dc050131b9</sp_page><subheader>false</subheader><sys_class_name>sp_container</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-09-05 00:47:59</sys_created_on><sys_id>6c2ed0a9c3fb22104d7636dc050131bf</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Início - Container 2</sys_name><sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package><sys_policy/><sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope><sys_update_name>sp_container_6c2ed0a9c3fb22104d7636dc050131bf</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-09-05 00:47:59</sys_updated_on><title/><width>container</width></sp_container></record_update>]]></payload>
+        <payload_hash>1074569299</payload_hash>
+        <record_name>Início - Container 2</record_name>
+        <reverted_from/>
+        <source>20488b5dc3f3e2104d7636dc050131a2</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-05 00:47:59</sys_created_on>
+        <sys_id>6c2e94a9c3fb22104d7636dc050131dd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>199175831910000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-05 00:47:59</sys_updated_on>
+        <type>Container</type>
+        <update_guid>e02e94a9e3fb22103a23c76afab8e3dd</update_guid>
+        <update_guid_history>e02e94a9e3fb22103a23c76afab8e3dd:1074569299</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Início - Container 2">172ed4a9c3fb22104d7636dc050131b9</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-05 00:48:10</sys_created_on>
+        <sys_db_object display_value="" name="sp_container">sp_container</sys_db_object>
+        <sys_id>70aab30cdb5c40459b83ac2994aaa9f9</sys_id>
+        <sys_metadata>6c2ed0a9c3fb22104d7636dc050131bf</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Início - Container 2</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_scope_delete display_value="">1ef33293978743289a870dba302e2240</sys_scope_delete>
+        <sys_update_name>sp_container_6c2ed0a9c3fb22104d7636dc050131bf</sys_update_name>
+        <sys_update_version display_value="sp_container_6c2ed0a9c3fb22104d7636dc050131bf">6c2e94a9c3fb22104d7636dc050131dd</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-05 00:48:10</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.msk-home{ color:#e5e7eb; }&#13;
+.msk-hero{&#13;
+  background: linear-gradient(135deg,#3b82f6,#6366f1);&#13;
+  padding: 18px 20px; border-radius: 14px; box-shadow: 0 10px 30px rgba(2,6,23,.35);&#13;
+  margin-bottom: 16px; color:#fff;&#13;
+}&#13;
+.msk-hero h2{ margin:0 0 6px 0; font-weight:700; }&#13;
+.msk-quick{ margin-top:10px; display:flex; gap:10px; }&#13;
+.msk-btn{ padding:8px 14px; border-radius:10px; background:#0f172a; color:#fff; text-decoration:none; }&#13;
+.msk-btn.outline{ background:transparent; border:1px solid rgba(255,255,255,.6); }&#13;
+.msk-grid{&#13;
+  display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr));&#13;
+  gap:14px; margin-top:16px;&#13;
+}&#13;
+.msk-card{&#13;
+  background:#0f172a; border:1px solid rgba(148,163,184,.15); border-radius:14px;&#13;
+  padding:16px; text-decoration:none; color:#e5e7eb; box-shadow: 0 8px 24px rgba(2,6,23,.3);&#13;
+  transition: transform .15s ease, box-shadow .15s ease;&#13;
+}&#13;
+.msk-card:hover{ transform: translateY(-2px); box-shadow: 0 14px 30px rgba(2,6,23,.35); }&#13;
+.msk-card-head{ font-weight:600; opacity:.9; }&#13;
+.msk-card-num{ font-size:28px; font-weight:800; margin-top:8px; }&#13;
+.msk-card-sub{ opacity:.7; font-size:12px; }&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Cards e atalhos da Home do MockSkillUp</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>msk_home</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>msk_home</name>
+        <option_schema>{&#13;
+  "schema": {&#13;
+    "properties": {&#13;
+      "showAdminCards": { "type": "boolean", "default": true },&#13;
+      "heroTitle":      { "type": "string",  "default": "MockSkillUp" },&#13;
+      "heroSubtitle":   { "type": "string",  "default": "Bem-vindo ao portal" }&#13;
+    }&#13;
+  }&#13;
+}&#13;
+</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.metrics = { my_skills: 0, colaboradores: 0, equipes: 0, certificados: 0 };
+
+  // roles
+  var isAdmin  = gs.hasRole('x_snc_mock_skillup.admin') || gs.hasRole('admin');
+  var isGestor = gs.hasRole('x_snc_mock_skillup.gestor');
+  var isColab  = gs.hasRole('x_snc_mock_skillup.colaborador');
+  data.canAdmin = (isAdmin || isGestor);
+
+  // tabelas
+  var T_REL  = 'x_snc_mock_skillup_skill_do_colaborador';
+  var T_COL  = 'x_snc_mock_skillup_colaborador';
+  var T_EQP  = 'x_snc_mock_skillup_equipe';
+  var T_CERT = 'x_snc_mock_skillup_certificados'; // conforme seu projeto
+
+  // resolve colaborador do usuário logado
+  function getMyColaboradorId() {
+    var meId = gs.getUserID() || '';
+    var meEmail = (gs.getUser().getEmail() || '').trim().toLowerCase();
+    var gr = new GlideRecord(T_COL);
+    var qc = gr.addQuery('usuario', meId);
+    if (meEmail) qc.addOrCondition('email', meEmail);
+    gr.setLimit(1); gr.query();
+    return gr.next() ? '' + gr.getUniqueValue() : '';
+  }
+
+  // métrica: minhas skills
+  try {
+    var myColl = getMyColaboradorId();
+    if (myColl) {
+      var grSkills = new GlideRecord(T_REL);
+      grSkills.addQuery('colaborador', myColl);
+      grSkills.addQuery('ativo', true).addOrCondition('ativo', '', true); // se não tiver campo 'ativo', ignora
+      grSkills.query();
+      data.metrics.my_skills = grSkills.getRowCount();
+    }
+  } catch(e) {}
+
+  // métricas administrativas
+  if (data.canAdmin) {
+    try { var gr1 = new GlideRecord(T_COL);  gr1.query();  data.metrics.colaboradores = gr1.getRowCount(); } catch(e){}
+    try { var gr2 = new GlideRecord(T_EQP);  gr2.query();  data.metrics.equipes       = gr2.getRowCount(); } catch(e){}
+    try { var gr3 = new GlideRecord(T_CERT); gr3.query();  data.metrics.certificados  = gr3.getRowCount(); } catch(e){}
+  }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-05 00:57:54</sys_created_on>
+        <sys_id>9acf182dc3fb22104d7636dc050131d0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>msk_home</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sp_widget_9acf182dc3fb22104d7636dc050131d0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-05 00:57:54</sys_updated_on>
+        <template><![CDATA[<div class="msk-home">
+  <div class="msk-hero">
+    <h2>MockSkillUp</h2>
+    <p>Gerencie skills do time, colaboradores, equipes e certificados.</p>
+    <div class="msk-quick">
+      <a class="msk-btn" href="/msk?id=msk_skills">Minhas Skills</a>
+      <a class="msk-btn outline" href="/msk?id=msk_dash">Dashboard</a>
+    </div>
+  </div>
+
+  <div class="msk-grid">
+    <!-- Card Minhas Skills (sempre visível p/ quem tem role) -->
+    <a class="msk-card" href="/msk?id=msk_skills">
+      <div class="msk-card-head">Minhas Skills</div>
+      <div class="msk-card-num">{{data.metrics.my_skills}}</div>
+      <div class="msk-card-sub">skills ativas</div>
+    </a>
+
+    <!-- Cards de administração só aparecem se o usuário for gestor/admin -->
+    <a class="msk-card" href="/msk?id=msk_colab" ng-if="data.canAdmin">
+      <div class="msk-card-head">Colaboradores</div>
+      <div class="msk-card-num">{{data.metrics.colaboradores}}</div>
+      <div class="msk-card-sub">registros</div>
+    </a>
+
+    <a class="msk-card" href="/msk?id=msk_equipe" ng-if="data.canAdmin">
+      <div class="msk-card-head">Equipes</div>
+      <div class="msk-card-num">{{data.metrics.equipes}}</div>
+      <div class="msk-card-sub">cadastradas</div>
+    </a>
+
+    <a class="msk-card" href="/msk?id=msk_certificados" ng-if="data.canAdmin">
+      <div class="msk-card-head">Certificados</div>
+      <div class="msk-card-num">{{data.metrics.certificados}}</div>
+      <div class="msk-card-sub">lançados</div>
+    </a>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>
