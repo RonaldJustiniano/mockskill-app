@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal">
+    <sp_portal action="DELETE">
+        <alternate_portal/>
+        <communication_channels/>
+        <css_variables/>
+        <dark_theme/>
+        <default>false</default>
+        <enable_ais>false</enable_ais>
+        <enable_certificate_based_authentication>false</enable_certificate_based_authentication>
+        <enable_favorites>false</enable_favorites>
+        <hide_portal_name>false</hide_portal_name>
+        <homepage display_value="mock_home">cb945ebcc37322104d7636dc05013177</homepage>
+        <icon/>
+        <inactive>false</inactive>
+        <kb_knowledge_base/>
+        <kb_knowledge_page/>
+        <login_page/>
+        <logo/>
+        <notfound_page/>
+        <quick_start_config/>
+        <rtl_enabled>false</rtl_enabled>
+        <sc_catalog/>
+        <sc_catalog_page/>
+        <sc_category_page/>
+        <search_application/>
+        <search_results_configuration/>
+        <sp_chat_queue/>
+        <sp_rectangle_menu display_value="MockSkill Menu">cd665670c3b322104d7636dc0501314f</sp_rectangle_menu>
+        <sys_class_name>sp_portal</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-03 01:29:37</sys_created_on>
+        <sys_id>515496bcc37322104d7636dc050131f4</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>MockSkill Portal</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sp_portal_515496bcc37322104d7636dc050131f4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-03 01:41:20</sys_updated_on>
+        <theme display_value="Stock">79315153cb33310000f8d856634c9c4b</theme>
+        <title>MockSkill Portal</title>
+        <ts_index_group/>
+        <url_suffix>msk</url_suffix>
+    </sp_portal>
+    <sys_translated_text action="DELETE" query="documentkey=515496bcc37322104d7636dc050131f4"/>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</application>
+        <file_path/>
+        <instance_id>92e52a173b67ca14a36804e0b5e45a01</instance_id>
+        <instance_name>dev280770</instance_name>
+        <name>sp_portal_515496bcc37322104d7636dc050131f4</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal">
+    <sp_portal action="INSERT_OR_UPDATE">
+        <alternate_portal/>
+        <communication_channels/>
+        <css_variables/>
+        <dark_theme/>
+        <default>false</default>
+        <enable_ais>false</enable_ais>
+        <enable_certificate_based_authentication>false</enable_certificate_based_authentication>
+        <enable_favorites>false</enable_favorites>
+        <hide_portal_name>false</hide_portal_name>
+        <homepage display_value="mock_home">cb945ebcc37322104d7636dc05013177</homepage>
+        <icon/>
+        <inactive>false</inactive>
+        <kb_knowledge_base/>
+        <kb_knowledge_page/>
+        <login_page/>
+        <logo/>
+        <notfound_page/>
+        <quick_start_config/>
+        <rtl_enabled>false</rtl_enabled>
+        <sc_catalog/>
+        <sc_catalog_page/>
+        <sc_category_page/>
+        <search_application/>
+        <search_results_configuration/>
+        <sp_chat_queue/>
+        <sp_rectangle_menu display_value="MockSkill Menu">cd665670c3b322104d7636dc0501314f</sp_rectangle_menu>
+        <sys_class_name>sp_portal</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-03 01:29:37</sys_created_on>
+        <sys_id>515496bcc37322104d7636dc050131f4</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>MockSkill Portal</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sp_portal_515496bcc37322104d7636dc050131f4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-03 01:41:20</sys_updated_on>
+        <theme display_value="Stock">79315153cb33310000f8d856634c9c4b</theme>
+        <title>MockSkill Portal</title>
+        <ts_index_group/>
+        <url_suffix>msk</url_suffix>
+    </sp_portal>
+    <sys_translated_text action="delete_multiple" query="documentkey=515496bcc37322104d7636dc050131f4"/>
+</record_update>]]></payload>
+        <payload_hash>1501360920</payload_hash>
+        <record_name>MockSkill Portal</record_name>
+        <reverted_from/>
+        <source>4cd74f9dc3f3e2104d7636dc0501318a</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-04 18:31:44</sys_created_on>
+        <sys_id>81088711c337e2104d7636dc050131aa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19915ffb7480000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-04 18:31:44</sys_updated_on>
+        <type>Service Portal</type>
+        <update_guid>8d088711c637e2109c360a5583e712a9</update_guid>
+        <update_guid_history>8d088711c637e2109c360a5583e712a9:0,8b47035d26f3e2100719050a93efd2a3:-596584807,ea2796b0e3b3221011995d39a83af014:-1212726244,8dc65e70aeb322103237ab4a8515469e:2094098512,97745abc27732210b9fe4c5461925feb:-1433585264</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="MockSkill Portal">5c031ca9c3bb22104d7636dc0501315d</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-04 23:59:22</sys_created_on>
+        <sys_db_object display_value="" name="sp_portal">sp_portal</sys_db_object>
+        <sys_id>0ba7899bb01e48dc827045e88a2f9321</sys_id>
+        <sys_metadata>515496bcc37322104d7636dc050131f4</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>MockSkill Portal</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_scope_delete display_value="">1ef33293978743289a870dba302e2240</sys_scope_delete>
+        <sys_update_name>sp_portal_515496bcc37322104d7636dc050131f4</sys_update_name>
+        <sys_update_version display_value="sp_portal_515496bcc37322104d7636dc050131f4">81088711c337e2104d7636dc050131aa</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-04 23:59:22</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
