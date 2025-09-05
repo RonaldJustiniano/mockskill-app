@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_header_footer">
+    <sp_header_footer action="INSERT_OR_UPDATE">
+        <category>standard</category>
+        <client_script><![CDATA[api.controller = function ($scope, $uibModal) {
+  var c = this;
+  c.open = false;
+  c.toggle = function(){ c.open = !c.open; };
+
+  // avatar
+  $scope.avatarProfile = {
+    userID: $scope.user.sys_id,
+    name: $scope.user.name,
+    initials: (window.NOW && NOW.user_initials) || ''
+  };
+  if (window.NOW && NOW.user_avatar)
+    $scope.avatarProfile.userImage = NOW.user_avatar;
+
+  c.openLogin = function () {
+    // se quiser usar modal de login padrão, tente abrir se existir a instância
+    try {
+      $scope.$emit('sp.login', {}); // noop se não houver login-modal
+    } catch(e) {}
+  };
+}
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.msk-header{
+  background: linear-gradient(135deg,#3b82f6,#6366f1);
+  color:#fff; padding:10px 16px; display:flex; align-items:center; gap:16px;
+  position:relative; z-index:5;
+}
+.msk-header .brand{display:flex; align-items:center; gap:10px; font-weight:700;
+  color:#fff; text-decoration:none}
+.msk-header .brand img{max-height:28px}
+
+.msk-header .right{margin-left:auto; display:flex; align-items:center; gap:12px}
+.msk-header .logout,.msk-header .login{color:#fff}
+
+.msk-header .hamb{
+  display:none; margin-left:auto; background:transparent; color:#fff;
+  border:1px solid rgba(255,255,255,.5); border-radius:8px; padding:6px 10px
+}
+
+/* Área do menu (desktop mostra inline; mobile vira dropdown) */
+.msk-header .nav .dropdown-menu{background:#0f172a; border:none}
+.msk-header .nav .dropdown-menu &gt; li &gt; a{color:#e5e7eb}
+
+@media (max-width: 991px){
+  .msk-header .hamb{display:block}
+  .msk-header .nav{
+    position:absolute; top:100%; left:0; right:0; background:#0f172a;
+    display:none; padding:8px 12px; border-top:1px solid rgba(148,163,184,.15)
+  }
+  .msk-header .nav.open{display:block}
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function pspHeaderLink(scope, element, attrs, controller) {
+
+	var KEY = {
+		ENTER: 13,
+		SPACE: 32
+	};
+    $(element).on('click', 'a.navbar-brand', function(e) {
+        scope.expanded = false;
+    });
+    $(element).on('click.nav', '.navbar-collapse.in', function(e) {
+        var target = $(e.target);
+        if (target.is('a') && !target.hasClass("dropdown-toggle") && target.siblings('.dropdown-menu').length == 0) {
+            // collapse mobile nav if clicked an anchor that isn't a dropdown toggle
+            scope.expanded = false;
+            return;
+        }
+
+        // if neither target nor parent is an anchor or the parent anchor is a dropdown-toggle, do nothing
+        if (!target.parent().is('a') || target.parent().hasClass("dropdown-toggle") || target.parent().siblings('.dropdown-menu').length > 0)
+            return;
+
+        // collapse mobile nav if target is part of a submenu
+        if (target.parents("ul.dropdown-menu").length > 0) {
+            scope.expanded = false;
+            return;
+        }
+
+        // collapse mobile nav is target is part of the dropdown
+        if (target.parents("div.navbar-collapse").length > 0)
+            scope.expanded = false;
+    });
+    $(element).on('keydown', '.dropdown-menu > .header-menu-item', function(e) {
+        var target = e.target;
+        if (target.localName === 'a') {
+            if (e.keyCode === 37 || e.keyCode === 39) {
+                e.preventDefault();
+                $(target).parents('li').removeClass('open');
+                $(target).parents('li').find('a').focus();
+            } else if (e.keyCode === 9) {
+                $(target).parents('li').removeClass('open');
+            }
+        }
+    });
+
+    $('body').click(function(event) {
+        if ($(event.target).text() !== controller.toursTranslation && !$(event.target).is("[aria-expanded]") && scope.isMobileViewOnDesktopExpanded && !(document.getElementsByClassName("mobile-menu-modal-list")[0].contains(event.target)))
+            scope.toggleMobileMenuVisibility();
+    });
+
+    // Closing mobile navigation menu after hitting Tab key on Logout option to focus on next DOM element on the page.
+    $(document).on('keydown', 'ul > li.logout > a[href*="logout"]', function(keyDownEvent) {
+        var TAB_KEY_VALUE = 'Tab';
+
+        if (keyDownEvent.key === TAB_KEY_VALUE && scope.mobileDevice) {
+            scope.$applyAsync(function() {
+                scope.toggleMobileMenuVisibility();
+            });
+        }
+    });
+    $(document).on('keydown', 'ul > li.login', function(keyDownEvent) {
+        var TAB_KEY_VALUE = 'Tab';
+
+        if (keyDownEvent.key === TAB_KEY_VALUE && scope.mobileDevice) {
+            scope.$applyAsync(function() {
+                scope.toggleMobileMenuVisibility();
+            });
+        }
+    });
+    // Helper function to handle the arrow key navigation in the header
+    function handleKeyPressEvents(e) {
+        var target = e.target;
+        var querySelector;
+        if ($(this).hasClass('main-header-item'))
+            querySelector = 'li.main-header-item';
+        else if ($(this).hasClass('gt-menu-item'))
+            querySelector = 'li.gt-menu-item';
+
+        if (target.localName === 'a') {
+            var currentMenuItem = $(target).parents('li');
+            var parentUL = currentMenuItem.parents('ul');
+            var allMenuItems = parentUL.children(querySelector);
+            var firstMenuItem = allMenuItems.first();
+            var lastMenuItem = allMenuItems.last();
+            var menuItemToFocus;
+
+            // Only Side arrow keys should work for gt-menu-item and only vertical arrow keys should work for main-header-item
+            if (querySelector === 'li.gt-menu-item' && !(e.keyCode === 37 || e.keyCode === 39 || e.keyCode === 9))
+                return;
+            else if (querySelector === 'li.main-header-item' && !(e.keyCode === 38 || e.keyCode === 40))
+                return;
+
+            if (querySelector === 'li.gt-menu-item') {
+                if (e.keyCode === 9) {
+                    $(target).parents('li').removeClass('open');
+                    return;
+                } else {
+                    e.preventDefault();
+                    currentMenuItem.removeClass('open');
+                }
+            } else
+                e.preventDefault();
+
+            if (e.keyCode === 37 || e.keyCode === 38) {
+                var previousMenuItem = currentMenuItem.prevAll(querySelector);
+                currentMenuItem.prevAll(querySelector).first();
+                //enable circular navigation
+                menuItemToFocus = previousMenuItem.length ? previousMenuItem : lastMenuItem;
+                menuItemToFocus.find('a').focus();
+            } else if (e.keyCode === 39 || e.keyCode === 40) {
+                var nextMenuItem = currentMenuItem.nextAll(querySelector).first();
+                //enable circular navigation
+                menuItemToFocus = nextMenuItem.length ? nextMenuItem : firstMenuItem;
+                menuItemToFocus.find('a').focus();
+            }
+        }
+    }
+
+    // Handler to focus the first element of More Items dropdown on pressing Space/Enter/Down Arrow key.
+    $(element).on('keydown', '#more-items-button', function(e) {
+        if (e.keyCode === 32 || e.keyCode === 13 || e.keyCode === 40) {
+            e.preventDefault();
+            var target = e.target;
+            var moreItemsDropdown = '#more-items-dropdown';
+            $(target).click();
+            $(moreItemsDropdown).find('li.header-menu-item a:first').focus();
+        }
+    });
+
+    // Capturing the arrow key navigation in mega menu for both desktop and mobile view  
+    $(element).on('keydown', '.gt-menu-item, .main-header-item', handleKeyPressEvents);
+
+    var rateLimitedCallback = debounce(function() {
+        scope.$apply(function() {
+            // update current scope based on the new innerWidth and let angular update the view.
+            scope.mobileDevice = controller.data.isMobile || (window.innerWidth <= controller.MOBILE_DEVICE_SCREEN_WIDTH);
+        });
+    }, 250);
+
+    $(window).resize(rateLimitedCallback);
+
+    // This helper returns a function, that, as long as it continues to be invoked, will not
+    // be triggered. The function will be called after it stops being called for
+    // N milliseconds. If `immediate` is passed, trigger the function on the
+    // leading edge, instead of the trailing.
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this,
+                args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+}]]></link>
+        <name>msk_footer_polaris</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function () {
+  var p = $sp.getPortalRecord();
+  data.portal = {
+    title: p.getDisplayValue('title'),
+    logo: p.getValue('logo'),
+    homepage_dv: $sp.getDisplayValue('homepage')
+  };
+
+  // Pega a instância de menu selecionada na Instance deste header
+  var menuInst = $sp.getValue('sp_rectangle_menu');
+  if (menuInst)
+    data.menu = $sp.getWidgetFromInstance(menuInst);
+
+  // Seletor de idioma, se o plugin estiver ativo
+  data.langSelector = GlidePluginManager.isActive('com.glide.i18n') ? $sp.getWidget('sp-lang-selector')
+    : null;
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <static>false</static>
+        <sys_class_name>sp_header_footer</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-09-05 01:49:05</sys_created_on>
+        <sys_id>e71c6869c33f22104d7636dc050131ac</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>msk_footer_polaris</sys_name>
+        <sys_package display_value=" Mock SkillUp" source="x_snc_mock_skillup">389364c69f9322107f44bcf72024ab3f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Mock SkillUp">389364c69f9322107f44bcf72024ab3f</sys_scope>
+        <sys_update_name>sp_header_footer_e71c6869c33f22104d7636dc050131ac</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-09-05 02:10:54</sys_updated_on>
+        <template><![CDATA[<nav class="msk-header" role="navigation" aria-label="Primary">
+  <!-- Brand -->
+  <a class="brand" ng-href="?id={{::portal.homepage_dv}}" aria-label="{{::portal.title}}">
+    <img ng-if="::portal.logo" ng-src="{{::portal.logo}}" alt="{{::portal.title}}">
+    <span ng-if="!portal.logo">{{::portal.title}}</span>
+  </a>
+
+  <!-- Botão hamburguer (mobile) -->
+  <button class="hamb" type="button"
+          aria-label="Abrir menu" aria-expanded="{{c.open}}"
+          ng-click="c.toggle()">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  <!-- Lado direito: idioma (opcional) + usuário -->
+  <div class="right">
+    <sp-widget ng-if="data.langSelector" widget="::data.langSelector"></sp-widget>
+
+    <div class="user" ng-if="::user.logged_in">
+      <sn-avatar class="avatar-small" primary="avatarProfile"></sn-avatar>
+      <a class="logout" ng-href="{{::portal.logoutUrl}}">${Logout}</a>
+    </div>
+    <div ng-if="::!user.logged_in">
+      <a class="login" href ng-click="c.openLogin()">${Login}</a>
+    </div>
+  </div>
+
+  <!-- Menu (carregado da instância configurada na Instance do header) -->
+  <div class="nav" ng-class="{open: c.open}">
+    <sp-widget widget="data.menu"></sp-widget>
+  </div>
+</nav>
+]]></template>
+    </sp_header_footer>
+</record_update>
